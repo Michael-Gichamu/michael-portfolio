@@ -48,28 +48,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "medappoint",
-    index: "01",
-    title: "MedAppoint",
-    tag: "Healthcare · Web platform",
-    year: "2024",
-    description:
-      "A medical appointment platform designed for clinics and patients. I worked mainly on the frontend — building the booking flows, improving responsiveness, and making the interface work reliably across slower devices and unstable connections.",
-    impact:
-      "Pushed me deeper into frontend architecture, state management, and product thinking.",
-    highlights: [
-      "Reduced unnecessary re-renders and tightened component-level performance budgets.",
-      "Improved loading states and interaction responsiveness on slower networks.",
-      "Simplified the booking flow with product input.",
-      "Accessibility-first patterns: keyboard navigation, screen reader labels, larger tap targets.",
-    ],
-    stack: ["React", "TypeScript", "REST", "Tailwind", "Vite"],
-    accent: "#5B8CFF",
-    visual: "medtech",
-  },
-  {
     slug: "ai-troubleshooting",
-    index: "02",
+    index: "01",
     title: "AI-Augmented Troubleshooting System",
     tag: "Healthcare · LangGraph",
     year: "2025",
@@ -86,6 +66,26 @@ export const projects: Project[] = [
     stack: ["Python", "LangGraph", "LangChain", "OpenAI", "FastAPI", "PostgreSQL"],
     accent: "#7AA5FF",
     visual: "ai-graph",
+  },
+  {
+    slug: "medappoint",
+    index: "02",
+    title: "MedAppoint",
+    tag: "Healthcare · Web platform",
+    year: "2024",
+    description:
+      "A medical appointment platform designed for clinics and patients. I worked mainly on the frontend — building the booking flows, improving responsiveness, and making the interface work reliably across slower devices and unstable connections.",
+    impact:
+      "Pushed me deeper into frontend architecture, state management, and product thinking.",
+    highlights: [
+      "Reduced unnecessary re-renders and tightened component-level performance budgets.",
+      "Improved loading states and interaction responsiveness on slower networks.",
+      "Simplified the booking flow with product input.",
+      "Accessibility-first patterns: keyboard navigation, screen reader labels, larger tap targets.",
+    ],
+    stack: ["React", "TypeScript", "REST", "Tailwind", "Vite"],
+    accent: "#5B8CFF",
+    visual: "medtech",
   },
   {
     slug: "financial-automation",
