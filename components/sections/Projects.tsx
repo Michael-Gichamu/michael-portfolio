@@ -4,8 +4,18 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import GlassCard from "@/components/ui/GlassCard";
+import Slideshow from "@/components/ui/Slideshow";
 import { projects, type Project } from "@/lib/data";
 import { cn } from "@/lib/utils";
+
+const medappointSlides = [
+  { src: "/medappoint/01-home.png", label: "Home" },
+  { src: "/medappoint/02-search.png", label: "Search" },
+  { src: "/medappoint/03-filters.png", label: "Filters" },
+  { src: "/medappoint/04-doctor-profile.png", label: "Doctor profile" },
+  { src: "/medappoint/05-appointments.png", label: "Appointments" },
+  { src: "/medappoint/06-schedule.png", label: "Practice schedule" },
+];
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -18,11 +28,11 @@ export default function Projects() {
           kicker="Selected work"
           title={
             <>
-              A few things from the{" "}
-              <em className="italic text-gradient-accent">last two years</em>.
+              Software, AI, and{" "}
+              <em className="italic text-gradient-accent">automation</em>.
             </>
           }
-          description="Different stacks, different teams. Each one started with someone doing repetitive work in a way that didn't scale, and ended with software doing most of it instead."
+          description="A few projects from the last two years. The work spans frontend engineering, AI systems, and operational automation."
         />
 
         <div className="mt-16 space-y-24">
@@ -125,63 +135,24 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
 /* ── Visual variants ────────────────────────────────────────────────── */
 
 function ProjectVisual({ project }: { project: Project }) {
+  // MedAppoint shows real product screenshots in a slideshow — no synthetic mockup.
+  if (project.visual === "medtech") {
+    return (
+      <div className="w-full">
+        <Slideshow items={medappointSlides} caption="MedAppoint · UI" />
+      </div>
+    );
+  }
+
   return (
     <GlassCard className="aspect-[5/4] p-8 sm:p-10">
       <div className="absolute inset-0 mesh-bg opacity-60" />
       <div className="absolute inset-0 stroke-grid opacity-50" />
       <div className="relative flex h-full flex-col justify-between">
-        {project.visual === "medtech" && <MedtechVisual />}
         {project.visual === "ai-graph" && <AiGraphVisual />}
         {project.visual === "automation" && <AutomationVisual />}
       </div>
     </GlassCard>
-  );
-}
-
-function MedtechVisual() {
-  const slots = ["09:00", "10:30", "11:15", "13:00", "14:45"];
-  return (
-    <>
-      <header className="flex items-center justify-between">
-        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone-300">
-          MedAppoint / clinic-mode
-        </span>
-        <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-300">
-          live
-        </span>
-      </header>
-
-      <div className="my-6 grid grid-cols-2 gap-3">
-        {slots.slice(0, 4).map((t, i) => (
-          <motion.div
-            key={t}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 + i * 0.08, duration: 0.6, ease }}
-            className="rounded-lg border border-white/8 bg-white/[0.03] p-3"
-          >
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone-300">
-              {t}
-            </div>
-            <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-white/8">
-              <span
-                className="block h-full bg-gradient-to-r from-accent to-bone-100"
-                style={{ width: `${30 + i * 18}%` }}
-              />
-            </div>
-            <div className="mt-2 text-xs text-bone-100">
-              {["Dr. Mwangi", "Dr. Achieng", "Dr. Otieno", "Dr. Kamau"][i]}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <footer className="mt-auto flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-bone-300">
-        <span>p95 · 280ms</span>
-        <span className="text-bone-100">200+ slots / day</span>
-      </footer>
-    </>
   );
 }
 

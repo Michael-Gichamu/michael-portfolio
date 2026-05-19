@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Michael Gichamu — Software Engineer & AI Automation Specialist",
   description:
     "Software engineer in Nairobi. I build internal tools, AI-assisted workflows, and automation for small operational teams.",
-  metadataBase: new URL("https://michaelgichamu.dev"),
+  metadataBase: new URL("https://michaelgichamu.tech"),
   openGraph: {
     title: "Michael Gichamu — Software Engineer & AI Automation",
     description:

@@ -10,28 +10,25 @@ export const profile = {
 
 export const stats = [
   {
-    label: "Faster diagnostics on common faults",
+    label: "Faster troubleshooting workflows",
     value: 6,
     suffix: "×",
-    caption: "Average time went from 18 minutes to 3.",
+    caption:
+      "Reduced average diagnostic time from 18 minutes to 3 using an AI-assisted troubleshooting system.",
   },
   {
-    label: "Less time on the finance report",
+    label: "Reduction in reporting time",
     value: 90,
     suffix: "%",
-    caption: "Replaced a brittle manual process.",
+    caption:
+      "Automated a manual financial reporting workflow with n8n, Telegram, and Google Sheets integrations.",
   },
   {
     label: "LLM outputs evaluated",
     value: 800,
     suffix: "+",
-    caption: "About a year of calibration work at Scale.",
-  },
-  {
-    label: "Things shipped to real users",
-    value: 4,
-    suffix: "",
-    caption: "Across medtech, climate-tech, consumer, and AI ops.",
+    caption:
+      "Reasoning, instruction-following, and quality evaluation work through Scale AI / Remotasks.",
   },
 ] as const;
 
@@ -51,37 +48,18 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "medappoint",
-    index: "01",
-    title: "MedAppoint",
-    tag: "Healthcare · Web platform",
-    year: "2024",
-    description:
-      "A booking platform for patients and clinicians. A lot of the work was making the UI behave when the network didn't — most clinics I worked with had unreliable connectivity, and a lot of users were on older devices. Accessibility was the other big constraint.",
-    impact: "The booking flow stayed usable on 2G.",
-    highlights: [
-      "React frontend, with per-component performance budgets so the app didn't get heavier as it grew.",
-      "Loading patterns built for slow networks — skeleton states, optimistic updates, retry queues.",
-      "Worked with product on the API contract and the booking UX.",
-      "Accessibility-first: keyboard navigation, screen reader labels, larger tap targets.",
-    ],
-    stack: ["React", "TypeScript", "REST", "Tailwind", "Vite"],
-    accent: "#5B8CFF",
-    visual: "medtech",
-  },
-  {
     slug: "ai-troubleshooting",
-    index: "02",
+    index: "01",
     title: "AI-Augmented Troubleshooting System",
     tag: "Healthcare · LangGraph",
     year: "2025",
     description:
-      "An assistant for technicians troubleshooting hospital equipment. Senior techs had years of intuition about which faults usually showed up where; newer staff didn't. I built a tool that walks an operator through a structured diagnostic — LangGraph routes between stages, an LLM interprets the symptoms, and a small equipment ontology keeps its reasoning grounded.",
+      "An AI-assisted diagnostic workflow for biomedical equipment troubleshooting. The goal was to help technicians move through fault diagnosis more consistently, especially in situations where troubleshooting depended heavily on senior experience. LangGraph structures the diagnostic flow; an LLM interprets symptoms and guides the next steps; a small equipment ontology keeps its reasoning grounded.",
     impact:
-      "On a few common faults, average diagnosis time went from about 18 minutes to 3.",
+      "For a set of common faults, average troubleshooting time dropped from about 18 minutes to 3.",
     highlights: [
       "LangGraph state machine that routes between diagnostic stages.",
-      "Equipment ontology that keeps the LLM's reasoning grounded in real fault patterns.",
+      "Equipment ontology that grounds the LLM in real fault patterns.",
       "Operator-in-the-loop — every step is something the technician can confirm or override.",
       "Audit trail of every decision, kept for compliance review.",
     ],
@@ -90,20 +68,40 @@ export const projects: Project[] = [
     visual: "ai-graph",
   },
   {
+    slug: "medappoint",
+    index: "02",
+    title: "MedAppoint",
+    tag: "Healthcare · Web platform",
+    year: "2024",
+    description:
+      "A medical appointment platform designed for clinics and patients. I worked mainly on the frontend — building the booking flows, improving responsiveness, and making the interface work reliably across slower devices and unstable connections.",
+    impact:
+      "Pushed me deeper into frontend architecture, state management, and product thinking.",
+    highlights: [
+      "Reduced unnecessary re-renders and tightened component-level performance budgets.",
+      "Improved loading states and interaction responsiveness on slower networks.",
+      "Simplified the booking flow with product input.",
+      "Accessibility-first patterns: keyboard navigation, screen reader labels, larger tap targets.",
+    ],
+    stack: ["React", "TypeScript", "REST", "Tailwind", "Vite"],
+    accent: "#5B8CFF",
+    visual: "medtech",
+  },
+  {
     slug: "financial-automation",
     index: "03",
     title: "Financial Automation System",
     tag: "Climate-tech · Automation",
     year: "2025",
     description:
-      "A reporting pipeline for the finance team at an electric mobility startup. Their existing process involved several spreadsheets, a few people, and a lot of forwarded screenshots. I built a small system on n8n that captures entries through a Telegram bot the field operators were already using, validates them, and syncs to Sheets with a clean audit trail.",
+      "An automation workflow for financial reporting at an electric mobility startup. The original process relied on manually updating a spreadsheet from messages sent by field operators. I replaced most of that flow with an n8n automation that collects submissions through a Telegram bot, validates them, and syncs the data directly into Google Sheets.",
     impact:
-      "What used to take about 15 minutes of someone's time now happens in under a minute.",
+      "Reporting time dropped from around 15 minutes to under a minute.",
     highlights: [
-      "n8n workflows with retry and idempotency baked in, so flaky calls don't double-write.",
-      "Telegram interface, because that's what the field operators were already using.",
-      "Validation layer that catches malformed entries before anything hits the sheet.",
-      "Reconciliation check that flags anything that drifts between systems.",
+      "Validation checks that prevent malformed entries.",
+      "Retries and idempotency on every external call, so flaky network conditions don't double-write.",
+      "Telegram interface, because that's what the field team was already using.",
+      "Reconciliation that preserves reporting consistency across systems.",
     ],
     stack: ["n8n", "Node.js", "Telegram API", "Google Sheets API", "Docker"],
     accent: "#9CBEFF",
@@ -187,7 +185,7 @@ export const experiences = [
     period: "2025",
     location: "Climate-tech · Electric mobility",
     summary:
-      "Built and maintained the financial reporting automation. Stack was n8n, a Telegram bot, and a few Google APIs. Most of the effort went into the parts that aren't fun — retries, validation, reconciliation — because finance teams need to trust this stuff.",
+      "Built and maintained the financial reporting automation. Stack was n8n, a Telegram bot, and a few Google APIs. The focus was reliability — validation, retries, and reconciliation — so finance could trust the output.",
     outcomes: [
       "Reporting time dropped from ~15 minutes to under a minute",
       "Retries and idempotency on every external call",
@@ -226,10 +224,10 @@ export const experiences = [
     period: "2023",
     location: "AI data · Evaluation",
     summary:
-      "Calibration and evaluation work on LLM outputs — reasoning, code, instruction-following. Did this for about a year. It's still the most useful background I have for building anything with LLMs in production, because you stop expecting them to be smart and start watching how they fail.",
+      "Evaluation work on LLM outputs across reasoning, code, and instruction-following tasks. Did this for about a year. It's still the most useful background I have for building anything with LLMs in production — you stop expecting them to be smart and start watching how they fail.",
     outcomes: [
-      "800+ LLM outputs evaluated and calibrated",
-      "Pattern recognition for hallucination and drift",
+      "800+ LLM outputs evaluated",
+      "Pattern recognition for hallucination and reasoning failure",
       "Feedback that fed back into production model behavior",
     ],
   },

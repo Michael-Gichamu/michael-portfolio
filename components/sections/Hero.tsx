@@ -15,11 +15,11 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
 const ease = [0.22, 1, 0.36, 1] as const;
 
 // Headline broken into deliberate lines. Each line animates in sequence;
-// inside a line, the words stagger. The italic accent sits on the last line.
-const headlineLines: { words: string[]; accent?: boolean }[] = [
-  { words: ["Software,", "automation,"] },
-  { words: ["and", "AI", "workflows"] },
-  { words: ["for", "small", "operational", "teams."], accent: true },
+// inside a line, the words stagger. The italic accent sits on the closing line.
+const headlineLines: { words: string[]; accent?: boolean; muted?: boolean }[] = [
+  { words: ["Software", "Engineer"] },
+  { words: ["&"], muted: true },
+  { words: ["AI", "Automation", "Specialist."], accent: true },
 ];
 
 export default function Hero() {
@@ -69,13 +69,13 @@ export default function Hero() {
           transition={{ delay: 1.55, duration: 0.7, ease }}
           className="flex items-center justify-between"
         >
-          <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-bone-300">
-            <span className="text-accent">v.2026</span>
+          <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-bone-300">
+            <span className="text-accent">M.G.</span>
             <span className="h-px w-8 bg-white/15" />
-            <span>Engineer · Systems · AI</span>
+            <span>Software · AI Automation</span>
           </div>
-          <div className="hidden font-mono text-[11px] uppercase tracking-[0.22em] text-bone-300 sm:block">
-            Nairobi · 03°S
+          <div className="hidden font-mono text-[11px] uppercase tracking-[0.24em] text-bone-300 sm:block">
+            Nairobi, Kenya
           </div>
         </motion.div>
 
@@ -106,6 +106,8 @@ export default function Hero() {
                       >
                         {line.accent ? (
                           <em className="italic text-gradient-accent">{word}</em>
+                        ) : line.muted ? (
+                          <span className="text-bone-300/80">{word}</span>
                         ) : (
                           word
                         )}
@@ -124,10 +126,8 @@ export default function Hero() {
             transition={{ delay: 2.6, duration: 0.8, ease }}
             className="mt-8 max-w-md text-base leading-relaxed text-bone-300 sm:text-lg"
           >
-            I'm Michael Gichamu, based in Nairobi.
-            I work with small teams on internal tools, AI workflows,
-            and automation — usually for processes that started in a
-            spreadsheet and outgrew it.
+            Based in Nairobi. Focused on AI workflows, automation systems,
+            and modern web products.
           </motion.p>
 
           <motion.div

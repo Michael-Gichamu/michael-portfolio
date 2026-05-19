@@ -81,9 +81,8 @@ export default function Contact() {
             transition={{ duration: 0.7, ease, delay: 0.12 }}
             className="mx-auto mt-5 max-w-xl leading-relaxed text-bone-200"
           >
-            If you're working on something where software, automation, or AI
-            can take repetitive work off your team's plate, I'd be happy to
-            talk. I'm not always available, but I read everything that comes in.
+            If you're working on software, automation, or AI systems and think
+            I could help, feel free to reach out.
           </motion.p>
         </div>
 
