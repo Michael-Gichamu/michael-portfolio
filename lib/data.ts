@@ -48,28 +48,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "ai-troubleshooting",
-    index: "01",
-    title: "AI-Augmented Troubleshooting System",
-    tag: "Healthcare · LangGraph",
-    year: "2025",
-    description:
-      "An AI-assisted diagnostic workflow for biomedical equipment troubleshooting. The goal was to help technicians move through fault diagnosis more consistently, especially in situations where troubleshooting depended heavily on senior experience. LangGraph structures the diagnostic flow; an LLM interprets symptoms and guides the next steps; a small equipment ontology keeps its reasoning grounded.",
-    impact:
-      "For a set of common faults, average troubleshooting time dropped from about 18 minutes to 3.",
-    highlights: [
-      "LangGraph state machine that routes between diagnostic stages.",
-      "Equipment ontology that grounds the LLM in real fault patterns.",
-      "Operator-in-the-loop — every step is something the technician can confirm or override.",
-      "Audit trail of every decision, kept for compliance review.",
-    ],
-    stack: ["Python", "LangGraph", "LangChain", "OpenAI", "FastAPI", "PostgreSQL"],
-    accent: "#7AA5FF",
-    visual: "ai-graph",
-  },
-  {
     slug: "medappoint",
-    index: "02",
+    index: "01",
     title: "MedAppoint",
     tag: "Healthcare · Web platform",
     year: "2024",
@@ -86,6 +66,26 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "REST", "Tailwind", "Vite"],
     accent: "#5B8CFF",
     visual: "medtech",
+  },
+  {
+    slug: "ai-troubleshooting",
+    index: "02",
+    title: "AI-Augmented Troubleshooting System",
+    tag: "Healthcare · LangGraph",
+    year: "2025",
+    description:
+      "An AI-assisted diagnostic workflow for biomedical equipment troubleshooting. The goal was to help technicians move through fault diagnosis more consistently, especially in situations where troubleshooting depended heavily on senior experience. LangGraph structures the diagnostic flow; an LLM interprets symptoms and guides the next steps; a small equipment ontology keeps its reasoning grounded.",
+    impact:
+      "For a set of common faults, average troubleshooting time dropped from about 18 minutes to 3.",
+    highlights: [
+      "LangGraph state machine that routes between diagnostic stages.",
+      "Equipment ontology that grounds the LLM in real fault patterns.",
+      "Operator-in-the-loop — every step is something the technician can confirm or override.",
+      "Audit trail of every decision, kept for compliance review.",
+    ],
+    stack: ["Python", "LangGraph", "LangChain", "OpenAI", "FastAPI", "PostgreSQL"],
+    accent: "#7AA5FF",
+    visual: "ai-graph",
   },
   {
     slug: "financial-automation",
@@ -224,7 +224,7 @@ export const experiences = [
     period: "2023",
     location: "AI data · Evaluation",
     summary:
-      "Evaluation work on LLM outputs across reasoning, code, and instruction-following tasks. Did this for about a year. It's still the most useful background I have for building anything with LLMs in production — you stop expecting them to be smart and start watching how they fail.",
+      "Evaluation work on LLM outputs across reasoning, code, and instruction-following tasks. Did this for about 3 months. It's still the most useful background I have for building anything with LLMs in production — you stop expecting them to be smart and start watching how they fail.",
     outcomes: [
       "800+ LLM outputs evaluated",
       "Pattern recognition for hallucination and reasoning failure",
