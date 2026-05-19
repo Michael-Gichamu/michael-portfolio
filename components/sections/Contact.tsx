@@ -79,11 +79,11 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15% 0px" }}
             transition={{ duration: 0.7, ease, delay: 0.12 }}
-            className="mx-auto mt-5 max-w-xl text-balance leading-relaxed text-bone-200"
+            className="mx-auto mt-5 max-w-xl leading-relaxed text-bone-200"
           >
-            If you're building something where software, automation, or AI can
-            take repetitive work off your team's plate or make a process more
-            reliable, I'd be happy to talk.
+            If you're working on something where software, automation, or AI
+            can take repetitive work off your team's plate, I'd be happy to
+            talk. I'm not always available, but I read everything that comes in.
           </motion.p>
         </div>
 

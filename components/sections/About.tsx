@@ -15,19 +15,19 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const story = [
   {
-    year: "Background",
+    year: "School",
     title: "Biomedical engineering",
-    body: "My first few years out of school were spent working with hospital equipment — calibrating it, repairing it, figuring out why it didn't behave. It's where I learned to think about systems carefully, because the consequences of getting something wrong aren't abstract.",
+    body: "I studied biomedical engineering at university. First year I was interested in the equipment side. By the second I was spending most of my time outside class on software — building small things, helping out on group projects when the code part went sideways, reading more docs than coursework.",
   },
   {
-    year: "Shift",
-    title: "Into software",
-    body: "I moved into software because I kept seeing the same thing — clinics and field teams running operations out of spreadsheets, paper, and tribal knowledge. A lot of it didn't need to be that way. Software handled most of it more reliably, and LLMs handled some of the parts I used to think only people could do.",
+    year: "Drift",
+    title: "Where the interest moved",
+    body: "The systems around the equipment ended up being more interesting than the equipment itself. Booking flows that broke on slow networks. Reports stitched together from three spreadsheets and a WhatsApp group. Tribal knowledge held together by a few patient people. A lot of it was just software work that nobody had gotten around to.",
   },
   {
     year: "Now",
     title: "What I work on",
-    body: "Internal tools, AI-assisted workflows, automation pipelines. Most of what I build sits behind a small number of users who notice immediately if it breaks. So it can't break.",
+    body: "Internal tools, AI-assisted workflows, automation pipelines. The users are usually small in number and they notice immediately when something breaks, so a lot of the effort goes into the parts that aren't fun — validation, retries, the edge cases.",
   },
 ];
 
@@ -67,12 +67,11 @@ export default function About() {
           kicker="About"
           title={
             <>
-              Good systems are usually{" "}
-              <em className="italic text-gradient-accent">boring</em>. That's
-              the kind I try to build.
+              A bit of{" "}
+              <em className="italic text-gradient-accent">background</em>.
             </>
           }
-          description="They work, the people using them trust them, and after a week nobody thinks about them very much. Most of what I do is in that direction — software, automation, and a bit of AI where it genuinely helps."
+          description="I didn't start in software. I started in biomedical engineering, and somewhere in school the interest bent toward the systems around the equipment instead of the equipment itself. Short version of that path is below."
         />
 
         {/* Stats */}
@@ -106,12 +105,10 @@ export default function About() {
               How I got here
             </p>
             <h3 className="font-display text-4xl text-balance text-bone-50">
-              Biomedical engineering, then software, then{" "}
-              <em className="italic">a lot of operations work</em>.
+              Biomedical engineering at school. <em className="italic">Software</em> in my spare time. Then most of the time.
             </h3>
             <p className="max-w-md text-bone-300">
-              Three short notes on the path, because it explains why I tend to
-              care about the things I care about.
+              Three short notes on the path. They explain why I tend to care about the things I care about.
             </p>
           </div>
 

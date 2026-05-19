@@ -18,11 +18,11 @@ export default function Projects() {
           kicker="Selected work"
           title={
             <>
-              Three projects from the{" "}
+              A few things from the{" "}
               <em className="italic text-gradient-accent">last two years</em>.
             </>
           }
-          description="Different stacks and different domains, but each one took a process someone was doing by hand and replaced enough of it that the day got a little quieter."
+          description="Different stacks, different teams. Each one started with someone doing repetitive work in a way that didn't scale, and ended with software doing most of it instead."
         />
 
         <div className="mt-16 space-y-24">

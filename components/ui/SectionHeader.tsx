@@ -13,7 +13,17 @@ interface SectionHeaderProps {
 }
 
 const ease = [0.22, 1, 0.36, 1] as const;
+const viewport = { once: true, margin: "-15% 0px" } as const;
 
+/**
+ * SectionHeader — three-stage cinematic reveal:
+ *   1. Eyebrow: index, animated rule that scales in, and kicker label.
+ *   2. Title: clip-path mask reveal, like a film title card.
+ *   3. Description: late, quiet fade up.
+ *
+ * Uses direct `initial` props (not variants) so SSR/CSR render identically
+ * and hydration stays clean.
+ */
 export default function SectionHeader({
   index,
   kicker,
@@ -25,28 +35,50 @@ export default function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col gap-6",
+        "flex flex-col gap-7",
         align === "center" && "items-center text-center",
         className
       )}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-15% 0px" }}
-        transition={{ duration: 0.7, ease }}
-        className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-bone-300"
+      {/* Eyebrow */}
+      <div
+        className={cn(
+          "flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-bone-300",
+          align === "center" && "justify-center"
+        )}
       >
-        <span className="text-accent">{index}</span>
-        <span className="h-px w-8 bg-white/15" />
-        <span>{kicker}</span>
-      </motion.div>
+        <motion.span
+          initial={{ opacity: 0, y: 6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.6, ease }}
+          className="text-accent"
+        >
+          {index}
+        </motion.span>
+        <motion.span
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={viewport}
+          transition={{ duration: 0.7, ease, delay: 0.08 }}
+          className="h-px w-12 origin-left bg-white/20"
+        />
+        <motion.span
+          initial={{ opacity: 0, x: -6 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.55, ease, delay: 0.16 }}
+        >
+          {kicker}
+        </motion.span>
+      </div>
 
+      {/* Title — mask reveal from below */}
       <motion.h2
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-15% 0px" }}
-        transition={{ duration: 0.8, ease, delay: 0.06 }}
+        initial={{ clipPath: "inset(100% 0% 0% 0%)", y: 32 }}
+        whileInView={{ clipPath: "inset(0% 0% 0% 0%)", y: 0 }}
+        viewport={viewport}
+        transition={{ duration: 1.05, ease, delay: 0.18 }}
         className="text-display-md text-balance text-gradient max-w-3xl"
       >
         {title}
@@ -54,11 +86,11 @@ export default function SectionHeader({
 
       {description && (
         <motion.p
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15% 0px" }}
-          transition={{ duration: 0.7, ease, delay: 0.14 }}
-          className="max-w-2xl text-balance text-base leading-relaxed text-bone-300 sm:text-lg"
+          viewport={viewport}
+          transition={{ duration: 0.75, ease, delay: 0.42 }}
+          className="max-w-2xl text-base leading-relaxed text-bone-300 sm:text-[17px]"
         >
           {description}
         </motion.p>

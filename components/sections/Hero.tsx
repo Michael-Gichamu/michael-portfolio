@@ -14,20 +14,12 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-// Headline is split into words for stagger animation.
-// "manually." is highlighted as the conceptual hook.
-const headlineWords = [
-  "Software",
-  "and",
-  "AI",
-  "tools",
-  "for",
-  "the",
-  "work",
-  "that's",
-  "still",
-  "done",
-  "manually.",
+// Headline broken into deliberate lines. Each line animates in sequence;
+// inside a line, the words stagger. The italic accent sits on the last line.
+const headlineLines: { words: string[]; accent?: boolean }[] = [
+  { words: ["Software,", "automation,"] },
+  { words: ["and", "AI", "workflows"] },
+  { words: ["for", "small", "operational", "teams."], accent: true },
 ];
 
 export default function Hero() {
@@ -92,41 +84,50 @@ export default function Hero() {
           style={{ y: headlineY, opacity: headlineOpacity }}
           className="max-w-5xl will-change-transform"
         >
-          <h1 className="font-display text-display-xl text-balance text-bone-50">
-            {headlineWords.map((word, i) => (
-              <span
-                key={i}
-                className="inline-block overflow-hidden pb-[0.05em] align-bottom"
-              >
-                <motion.span
-                  initial={{ y: "110%", opacity: 0 }}
-                  animate={{ y: "0%", opacity: 1 }}
-                  transition={{
-                    delay: 1.6 + i * 0.06,
-                    duration: 0.95,
-                    ease,
-                  }}
-                  className="inline-block will-change-transform"
-                >
-                  {word === "manually." ? (
-                    <em className="italic text-gradient-accent">{word}</em>
-                  ) : (
-                    word
-                  )}{" "}
-                </motion.span>
-              </span>
-            ))}
+          <h1 className="font-display text-display-xl leading-[0.95] text-bone-50">
+            {headlineLines.map((line, li) => {
+              const lineDelay = 1.55 + li * 0.18;
+              return (
+                <span key={li} className="block">
+                  {line.words.map((word, wi) => (
+                    <span
+                      key={wi}
+                      className="inline-block overflow-hidden pb-[0.06em] align-bottom"
+                    >
+                      <motion.span
+                        initial={{ y: "110%", opacity: 0 }}
+                        animate={{ y: "0%", opacity: 1 }}
+                        transition={{
+                          delay: lineDelay + wi * 0.045,
+                          duration: 0.9,
+                          ease,
+                        }}
+                        className="inline-block will-change-transform"
+                      >
+                        {line.accent ? (
+                          <em className="italic text-gradient-accent">{word}</em>
+                        ) : (
+                          word
+                        )}
+                        {wi < line.words.length - 1 ? " " : ""}
+                      </motion.span>
+                    </span>
+                  ))}
+                </span>
+              );
+            })}
           </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.5, duration: 0.8, ease }}
-            className="mt-7 max-w-xl text-balance text-base leading-relaxed text-bone-300 sm:text-lg"
+            transition={{ delay: 2.6, duration: 0.8, ease }}
+            className="mt-8 max-w-md text-base leading-relaxed text-bone-300 sm:text-lg"
           >
-            I'm Michael Gichamu — a software engineer based in Nairobi.
-            Most of my work is internal tools, AI-assisted workflows,
-            and automation for small operational teams.
+            I'm Michael Gichamu, based in Nairobi.
+            I work with small teams on internal tools, AI workflows,
+            and automation — usually for processes that started in a
+            spreadsheet and outgrew it.
           </motion.p>
 
           <motion.div

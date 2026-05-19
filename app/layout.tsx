@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Cursor from "@/components/ui/Cursor";
 import LoadingScreen from "@/components/ui/LoadingScreen";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 export const metadata: Metadata = {
   title: "Michael Gichamu — Software Engineer & AI Automation Specialist",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-ink-950 text-bone-100 antialiased">
         <LoadingScreen />
         <Cursor />
+        <ScrollProgress />
         <SmoothScroll>
           <Navbar />
           <main className="relative">{children}</main>
