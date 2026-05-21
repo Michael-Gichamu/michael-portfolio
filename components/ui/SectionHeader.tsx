@@ -73,9 +73,9 @@ export default function SectionHeader({
         </motion.span>
       </div>
 
-      {/* Title — clip-path mask reveal (Emil: best animation tool in CSS).
-          Slides up from beneath an invisible crop edge, like a film title card. */}
-      <div className="overflow-hidden">
+      {/* Title — slides up from beneath a crop edge.
+          pb-[0.3em] gives descenders (y, g, p) room so they're never clipped. */}
+      <div className="overflow-hidden pb-[0.3em]">
         <motion.h2
           initial={{ y: "100%", opacity: 0 }}
           whileInView={{ y: "0%", opacity: 1 }}
