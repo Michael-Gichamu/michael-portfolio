@@ -30,6 +30,17 @@ test.describe("Portfolio smoke", () => {
     await page.goto("/");
     await page.locator("#contact").scrollIntoViewIfNeeded();
 
+    // Mock the Web3Forms API so no real network request is made in CI.
+    // The build embeds a placeholder key (see playwright.config.ts webServer.env)
+    // so the form bypasses the early-return guard and reaches the fetch call.
+    await page.route("https://api.web3forms.com/submit", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ success: true }),
+      });
+    });
+
     await page.getByPlaceholder("Your name").fill("Test User");
     await page.getByPlaceholder("Email").fill("test@example.com");
     await page.getByPlaceholder("What are you building?").fill("E2E test message");

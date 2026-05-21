@@ -36,6 +36,7 @@ const config = [
   {
     ignores: [
       ".next/**",
+      ".agents/**",
       "node_modules/**",
       "out/**",
       "tests/**",

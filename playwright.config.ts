@@ -34,5 +34,12 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     stdout: "ignore",
     stderr: "pipe",
+    // Embed a non-empty placeholder key at build time so the contact form
+    // proceeds past the early-return guard. The actual API call is mocked
+    // in the E2E test via page.route(), so no real email is ever sent.
+    env: {
+      NEXT_PUBLIC_WEB3FORMS_KEY:
+        process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "e2e_test_placeholder",
+    },
   },
 });
