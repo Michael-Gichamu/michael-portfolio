@@ -92,10 +92,10 @@ export default function Hero() {
                   {line.words.map((word, wi) => (
                     <span
                       key={wi}
-                      className="inline-block overflow-hidden pb-[0.06em] align-bottom"
+                      className="inline-block overflow-hidden pt-[0.18em] pb-[0.1em] px-[0.02em] align-bottom"
                     >
                       <motion.span
-                        initial={{ y: "110%", opacity: 0 }}
+                        initial={{ y: "120%", opacity: 0 }}
                         animate={{ y: "0%", opacity: 1 }}
                         transition={{
                           delay: lineDelay + wi * 0.045,
@@ -146,20 +146,6 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Floating code panel — absolute inside container so right-0 aligns with content edge */}
-        <motion.div
-          className="pointer-events-none absolute right-0 top-[42%] hidden -translate-y-1/2 lg:block"
-          initial={{ opacity: 0, y: 24, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 2.1, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 3.2 }}
-          >
-            <FloatingCodePanel />
-          </motion.div>
-        </motion.div>
       </div>
 
       {/* Scroll indicator — pinned just above the marquee, never crowded */}
@@ -208,118 +194,4 @@ function Arrow() {
   );
 }
 
-/* ─── Floating code panel ────────────────────────────────────────────────── */
-
-function CodeLine({ num, children }: { num: number; children: React.ReactNode }) {
-  return (
-    <div className="flex gap-3">
-      <span className="w-5 flex-shrink-0 select-none text-right font-mono text-[10px] leading-[1.8] text-bone-400/40">
-        {num}
-      </span>
-      <span className="font-mono text-[11.5px] leading-[1.8]">{children}</span>
-    </div>
-  );
-}
-
-function FloatingCodePanel() {
-  return (
-    <div
-      style={{
-        transform: "perspective(1000px) rotateY(-7deg) rotateX(3deg)",
-        filter: "drop-shadow(0 40px 70px rgba(0,0,0,0.65))",
-      }}
-    >
-      <div className="w-[310px] overflow-hidden rounded-xl border border-white/[0.09] bg-ink-900/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-md xl:w-[340px]">
-        {/* macOS chrome bar */}
-        <div className="flex items-center gap-1.5 border-b border-white/[0.06] bg-ink-950/80 px-4 py-2.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-red-500/75" />
-          <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/75" />
-          <span className="h-2.5 w-2.5 rounded-full bg-green-500/75" />
-          <span className="ml-3 font-mono text-[10px] uppercase tracking-[0.18em] text-bone-400">
-            diagnostic_agent.py
-          </span>
-          <span className="ml-auto flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-            <span className="font-mono text-[9px] tracking-wide text-emerald-400">running</span>
-          </span>
-        </div>
-
-        {/* Code body */}
-        <div className="space-y-0 px-4 py-4">
-          <CodeLine num={1}>
-            <span className="text-[#7AA5FF]">from </span>
-            <span className="text-bone-200">langchain.agents </span>
-            <span className="text-[#7AA5FF]">import </span>
-            <span className="text-bone-200">Agent</span>
-          </CodeLine>
-          <CodeLine num={2}>
-            <span className="text-[#7AA5FF]">from </span>
-            <span className="text-bone-200">app.tools </span>
-            <span className="text-[#7AA5FF]">import </span>
-            <span className="text-bone-200">classify</span>
-          </CodeLine>
-          <CodeLine num={3}><span className="text-bone-400"> </span></CodeLine>
-          <CodeLine num={4}>
-            <span className="text-[#7AA5FF]">async def </span>
-            <span className="text-[#9CBEFF]">run</span>
-            <span className="text-bone-200">(report: </span>
-            <span className="text-[#88C0D0]">dict</span>
-            <span className="text-bone-200">) -&gt; </span>
-            <span className="text-[#88C0D0]">Result</span>
-            <span className="text-bone-200">:</span>
-          </CodeLine>
-          <CodeLine num={5}>
-            <span className="text-bone-200">    symptoms = </span>
-            <span className="text-[#7AA5FF]">await </span>
-            <span className="text-[#9CBEFF]">parse</span>
-            <span className="text-bone-200">(report)</span>
-          </CodeLine>
-          <CodeLine num={6}>
-            <span className="text-bone-200">    cls = </span>
-            <span className="text-[#9CBEFF]">classify</span>
-            <span className="text-bone-200">(symptoms)</span>
-          </CodeLine>
-          <CodeLine num={7}><span className="text-bone-400"> </span></CodeLine>
-          <CodeLine num={8}>
-            <span className="text-[#7AA5FF]">    if </span>
-            <span className="text-bone-200">cls.confidence &gt;= </span>
-            <span className="text-[#EBCB8B]">0.85</span>
-            <span className="text-bone-200">:</span>
-          </CodeLine>
-          <CodeLine num={9}>
-            <span className="text-[#7AA5FF]">        return await </span>
-            <span className="text-bone-200">llm.</span>
-            <span className="text-[#9CBEFF]">diagnose</span>
-            <span className="text-bone-200">(cls)</span>
-          </CodeLine>
-          <CodeLine num={10}><span className="text-bone-400"> </span></CodeLine>
-          <CodeLine num={11}>
-            <span className="text-bone-400">    # ✓ </span>
-            <span className="text-emerald-400">94.2% confidence</span>
-            <span className="text-bone-400"> · 2.8s</span>
-          </CodeLine>
-        </div>
-
-        {/* Status bar */}
-        <div className="flex items-center justify-between border-t border-white/[0.05] bg-[#3d6bff]/[0.06] px-4 py-2 font-mono text-[9px] uppercase tracking-[0.16em]">
-          <span className="text-bone-400">Python 3.12</span>
-          <span className="text-bone-400">LangChain · OpenAI</span>
-          <span className="flex items-center gap-1 text-emerald-400">
-            <span className="h-1 w-1 rounded-full bg-emerald-400" />
-            0 errors
-          </span>
-        </div>
-
-        {/* Glow bleed at the bottom — makes it feel lit from inside */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-20 rounded-b-xl"
-          style={{
-            background: "linear-gradient(to top, rgba(91,140,255,0.06), transparent)",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
 

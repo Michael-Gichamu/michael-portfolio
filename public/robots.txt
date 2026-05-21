@@ -1,0 +1,27 @@
+# robots.txt — michaelgichamu.tech
+# Allow all well-behaved crawlers to index the full portfolio.
+
+User-agent: *
+Allow: /
+
+# Block common AI training scrapers that don't respect Disallow properly —
+# listing them explicitly signals intent even if not always honoured.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+Sitemap: https://michaelgichamu.tech/sitemap.xml

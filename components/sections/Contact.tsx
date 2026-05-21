@@ -31,11 +31,22 @@ export default function Contact() {
     const form = e.currentTarget;
     const data = new FormData(form);
     const senderName = String(data.get("name") ?? "Someone");
+    const senderEmail = String(data.get("email") ?? "");
+
+    // Honeypot check — bots fill hidden fields; humans never see them
+    if (data.get("botcheck")) {
+      // Silently succeed so bots don't know they were caught
+      setState("sent");
+      form.reset();
+      return;
+    }
 
     // Web3Forms required + optional fields
     data.append("access_key", WEB3FORMS_KEY);
     data.append("subject", `Portfolio contact from ${senderName}`);
     data.append("from_name", "Portfolio Contact Form");
+    // Reply-to lets me hit Reply in my inbox and go straight to the sender
+    if (senderEmail) data.append("replyto", senderEmail);
     // Redirect Web3Forms' thank-you page back to ourselves (we handle the UI)
     data.append("redirect", "false");
 
@@ -122,9 +133,19 @@ export default function Contact() {
           transition={{ duration: 0.8, ease, delay: 0.18 }}
           className="mx-auto mt-12 max-w-2xl rounded-2xl glass-strong p-6 sm:p-8"
         >
+          {/* Honeypot — hidden from humans, filled by bots. Must stay invisible. */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            tabIndex={-1}
+            aria-hidden="true"
+            style={{ display: "none" }}
+            defaultChecked={false}
+          />
+
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <Field label="Your name" name="name" required />
-            <Field label="Email" name="email" type="email" required />
+            <Field label="Your name" name="name" required maxLength={100} />
+            <Field label="Email" name="email" type="email" required maxLength={254} />
           </div>
           <div className="mt-5">
             <Field
@@ -133,6 +154,7 @@ export default function Contact() {
               as="textarea"
               rows={5}
               required
+              maxLength={2000}
             />
           </div>
 
@@ -188,6 +210,7 @@ function Field({
   as = "input",
   rows,
   required,
+  maxLength,
 }: {
   label: string;
   name: string;
@@ -195,6 +218,7 @@ function Field({
   as?: "input" | "textarea";
   rows?: number;
   required?: boolean;
+  maxLength?: number;
 }) {
   const baseInput =
     "peer w-full rounded-lg border border-white/[0.08] bg-ink-900/60 px-4 pt-6 pb-2 text-bone-50 outline-none transition-colors duration-300 focus:border-accent/60 placeholder-transparent";
@@ -206,6 +230,8 @@ function Field({
           rows={rows}
           placeholder={label}
           required={required}
+          maxLength={maxLength}
+          autoComplete="off"
           className={cn(baseInput, "resize-none")}
         />
       ) : (
@@ -214,6 +240,8 @@ function Field({
           type={type}
           placeholder={label}
           required={required}
+          maxLength={maxLength}
+          autoComplete={type === "email" ? "email" : name === "name" ? "name" : "off"}
           className={baseInput}
         />
       )}
@@ -237,7 +265,7 @@ function ContactLink({
     <a
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
-      rel="noreferrer"
+      rel="noopener noreferrer"
       className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] px-5 py-4 transition-colors hover:border-accent/40 hover:bg-white/[0.04]"
     >
       <div className="flex flex-col">

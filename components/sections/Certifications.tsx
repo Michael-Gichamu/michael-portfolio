@@ -35,7 +35,7 @@ export default function Certifications() {
           <motion.a
             href={featured.href}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, clipPath: "inset(0 100% 0 0 round 16px)" }}
             whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0 round 16px)" }}
             viewport={{ once: true, margin: "-15% 0px" }}
@@ -60,6 +60,9 @@ export default function Certifications() {
                 <p className="mt-5 text-[15px] leading-relaxed text-bone-200">
                   {featured.blurb}
                 </p>
+
+                {/* Coding visual — mini 3-D floating editor */}
+                <CertCodeVisual />
               </div>
 
               {/* Bottom — verify link row */}
@@ -83,7 +86,7 @@ export default function Certifications() {
               key={c.title}
               href={c.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, clipPath: "inset(100% 0 0 0 round 16px)" }}
               whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0 round 16px)" }}
               viewport={{ once: true, margin: "-15% 0px" }}
@@ -119,6 +122,106 @@ export default function Certifications() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ─── Certificate coding visual ─────────────────────────────────────────── */
+
+/**
+ * A 3-D perspective-tilted mini code editor that lives inside the
+ * ALX featured certificate card. Shows a TypeScript full-stack snippet
+ * with syntax highlighting + a gentle float animation.
+ */
+function CertCodeVisual() {
+  return (
+    <motion.div
+      className="mt-7 select-none"
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+    >
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+        style={{ transform: "perspective(800px) rotateX(3deg) rotateY(-5deg)" }}
+      >
+        {/* Editor chrome */}
+        <div className="overflow-hidden rounded-xl border border-white/[0.08] bg-ink-950/90 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)]">
+          {/* Title bar */}
+          <div className="flex items-center gap-1.5 border-b border-white/[0.05] bg-ink-900/60 px-3.5 py-2">
+            <span className="h-2 w-2 rounded-full bg-red-500/70" />
+            <span className="h-2 w-2 rounded-full bg-yellow-500/70" />
+            <span className="h-2 w-2 rounded-full bg-green-500/70" />
+            <span className="ml-2.5 font-mono text-[9px] uppercase tracking-[0.18em] text-bone-400">
+              AppointmentCard.tsx
+            </span>
+            <span className="ml-auto flex items-center gap-1">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+              <span className="font-mono text-[8px] text-emerald-400">compiled</span>
+            </span>
+          </div>
+
+          {/* Code lines */}
+          <div className="space-y-0 px-3.5 py-3">
+            {[
+              [
+                <span key="k" className="text-[#7AA5FF]">import </span>,
+                <span key="b" className="text-bone-200">{"{ useState } "}</span>,
+                <span key="k2" className="text-[#7AA5FF]">from </span>,
+                <span key="s" className="text-[#A3BE8C]">&quot;react&quot;</span>,
+              ],
+              [],
+              [
+                <span key="k" className="text-[#7AA5FF]">export default function </span>,
+                <span key="fn" className="text-[#9CBEFF]">AppointmentCard</span>,
+                <span key="p" className="text-bone-200">{"({ doctor }) {"}</span>,
+              ],
+              [
+                <span key="i" className="text-bone-200">{"  "}</span>,
+                <span key="k" className="text-[#7AA5FF]">const </span>,
+                <span key="v" className="text-bone-200">[booked, setBooked] = </span>,
+                <span key="fn" className="text-[#9CBEFF]">useState</span>,
+                <span key="p" className="text-bone-200">(</span>,
+                <span key="b2" className="text-[#7AA5FF]">false</span>,
+                <span key="cp" className="text-bone-200">)</span>,
+              ],
+              [
+                <span key="sp" className="text-bone-200">{"  "}</span>,
+                <span key="k" className="text-[#7AA5FF]">return </span>,
+                <span key="p" className="text-bone-200">booked ? </span>,
+                <span key="c" className="text-[#88C0D0]">{"<Confirmed />"}</span>,
+                <span key="c2" className="text-bone-200"> : (</span>,
+              ],
+              [
+                <span key="sp" className="text-bone-200">{"    "}</span>,
+                <span key="c" className="text-[#88C0D0]">{"<BookButton "}</span>,
+                <span key="p" className="text-[#9CBEFF]">onClick</span>,
+                <span key="eq" className="text-bone-200">{"={() => "}</span>,
+                <span key="fn" className="text-[#9CBEFF]">setBooked</span>,
+                <span key="a" className="text-bone-200">{"(true)} />"}</span>,
+              ],
+              [<span key="c" className="text-bone-200">{"  )"}</span>],
+              [<span key="c" className="text-bone-200">{"}"}</span>],
+            ].map((tokens, i) => (
+              <div key={i} className="flex gap-2.5 font-mono text-[10.5px] leading-[1.75]">
+                <span className="w-4 flex-shrink-0 select-none text-right text-bone-400/35">
+                  {i + 1}
+                </span>
+                <span>{tokens}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Status bar */}
+          <div className="flex items-center justify-between border-t border-white/[0.04] bg-[#5b8cff]/[0.05] px-3.5 py-1.5 font-mono text-[8.5px] uppercase tracking-[0.15em]">
+            <span className="text-bone-400">TypeScript · React</span>
+            <span className="text-bone-400">Next.js · Tailwind</span>
+            <span className="text-emerald-400">✓ 0 errors</span>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

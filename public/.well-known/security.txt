@@ -1,0 +1,11 @@
+# Security policy for michaelgichamu.tech
+# RFC 9116 — https://securitytxt.org/
+
+Contact: mailto:michaelmatere606@gmail.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://michaelgichamu.tech/.well-known/security.txt
+
+# If you find a security vulnerability in this portfolio, please email me
+# directly. I'll respond within 48 hours. No bug bounty is offered, but
+# responsible disclosure is appreciated and will be credited if desired.
