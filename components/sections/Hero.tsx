@@ -126,8 +126,8 @@ export default function Hero() {
             transition={{ delay: 2.6, duration: 0.8, ease }}
             className="mt-8 max-w-md text-base leading-relaxed text-bone-300 sm:text-lg"
           >
-            Based in Nairobi. Focused on AI workflows, automation systems,
-            and modern web products.
+            Nairobi-based. I build the systems that cut manual work —
+            AI agents, automation pipelines, and the web products that run on top of them.
           </motion.p>
 
           <motion.div

@@ -66,26 +66,37 @@ export default function ScrollProgress() {
   const active = chapters[activeIndex];
 
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-4 sm:right-6 md:flex"
-    >
-      <motion.span
-        key={active.id}
-        initial={{ opacity: 0, y: 4 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="font-mono text-[10px] uppercase tracking-[0.3em] text-bone-300"
-      >
-        {active.label}
-      </motion.span>
+    <>
+      {/* Top progress bar — 2px accent line tracking scroll depth */}
+      <motion.div
+        aria-hidden
+        style={{ scaleX: smoothed, transformOrigin: "left" }}
+        className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] bg-gradient-to-r from-accent via-bone-100/80 to-accent"
+      />
 
-      <div className="relative h-[22vh] w-px overflow-hidden bg-white/[0.07]">
-        <motion.div
-          style={{ height: lineHeight }}
-          className="absolute left-0 top-0 w-px bg-gradient-to-b from-bone-100/0 via-bone-100/60 to-accent"
-        />
+      {/* Right-edge chapter marker */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-4 sm:right-6 md:flex"
+      >
+        <motion.span
+          key={active.id}
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+          className="font-mono text-[10px] uppercase tracking-[0.3em] text-bone-300"
+        >
+          {active.label}
+        </motion.span>
+
+        <div className="relative h-[22vh] w-px overflow-hidden bg-white/[0.07]">
+          <motion.div
+            style={{ height: lineHeight }}
+            className="absolute left-0 top-0 w-px bg-gradient-to-b from-bone-100/0 via-accent/70 to-accent"
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

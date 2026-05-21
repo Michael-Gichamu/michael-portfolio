@@ -108,8 +108,8 @@ export default function Contact() {
             transition={{ duration: 0.7, ease, delay: 0.12 }}
             className="mx-auto mt-5 max-w-xl leading-relaxed text-bone-200"
           >
-            If you're working on software, automation, or AI systems and think
-            I could help, feel free to reach out.
+            Building something that needs automation or an AI system behind it?
+            Tell me what you're working on.
           </motion.p>
         </div>
 

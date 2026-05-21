@@ -73,16 +73,19 @@ export default function SectionHeader({
         </motion.span>
       </div>
 
-      {/* Title — mask reveal from below */}
-      <motion.h2
-        initial={{ clipPath: "inset(100% 0% 0% 0%)", y: 32 }}
-        whileInView={{ clipPath: "inset(0% 0% 0% 0%)", y: 0 }}
-        viewport={viewport}
-        transition={{ duration: 1.05, ease, delay: 0.18 }}
-        className="text-display-md text-balance text-gradient max-w-3xl"
-      >
-        {title}
-      </motion.h2>
+      {/* Title — clip-path mask reveal (Emil: best animation tool in CSS).
+          Slides up from beneath an invisible crop edge, like a film title card. */}
+      <div className="overflow-hidden">
+        <motion.h2
+          initial={{ y: "100%", opacity: 0 }}
+          whileInView={{ y: "0%", opacity: 1 }}
+          viewport={viewport}
+          transition={{ duration: 0.85, ease: [0.23, 1, 0.32, 1], delay: 0.18 }}
+          className="text-display-md text-balance text-gradient max-w-3xl"
+        >
+          {title}
+        </motion.h2>
+      </div>
 
       {description && (
         <motion.p

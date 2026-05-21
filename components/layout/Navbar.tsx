@@ -56,9 +56,11 @@ export default function Navbar() {
                 <a
                   key={n.href}
                   href={n.href}
-                  className="rounded-full px-4 py-2 text-sm text-bone-200 transition-colors hover:text-bone-50"
+                  className="group relative rounded-full px-4 py-2 text-sm text-bone-200 transition-colors duration-150 hover:text-bone-50"
                 >
                   {n.label}
+                  {/* Underline that scales in from left on hover */}
+                  <span className="absolute bottom-1.5 left-4 right-4 h-px origin-left scale-x-0 bg-accent/60 transition-transform duration-200 ease-out group-hover:scale-x-100" />
                 </a>
               ))}
             </nav>
@@ -94,38 +96,81 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — clips in from top-right corner */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-ink-950/95 backdrop-blur-xl md:hidden"
+            initial={{ clipPath: "inset(0 0 100% 0 round 0px)" }}
+            animate={{ clipPath: "inset(0 0 0% 0 round 0px)" }}
+            exit={{ clipPath: "inset(0 100% 0 0 round 0px)" }}
+            transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-40 bg-ink-950 md:hidden"
             onClick={() => setOpen(false)}
           >
-            <nav className="container-page flex h-full flex-col justify-center gap-2 pt-20">
+            {/* Subtle noise layer */}
+            <div className="pointer-events-none absolute inset-0 bg-noise opacity-[0.03]" />
+
+            {/* Vertical accent strip */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              exit={{ scaleY: 0 }}
+              transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1], delay: 0.05 }}
+              style={{ transformOrigin: "top" }}
+              className="absolute left-6 top-24 h-[55vh] w-px bg-gradient-to-b from-accent/60 via-accent/20 to-transparent sm:left-10"
+            />
+
+            <nav className="container-page flex h-full flex-col justify-center gap-1 pt-16">
               {nav.map((n, i) => (
-                <motion.a
-                  key={n.href}
-                  href={n.href}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    transition: { delay: 0.05 + i * 0.05, duration: 0.45 },
-                  }}
-                  className="font-display text-5xl text-bone-50"
-                  onClick={() => setOpen(false)}
-                >
-                  {n.label}
-                </motion.a>
+                <div key={n.href} className="overflow-hidden py-1">
+                  <motion.a
+                    href={n.href}
+                    initial={{ y: "110%", opacity: 0 }}
+                    animate={{
+                      y: "0%",
+                      opacity: 1,
+                      transition: {
+                        delay: 0.18 + i * 0.07,
+                        duration: 0.6,
+                        ease: [0.22, 1, 0.36, 1],
+                      },
+                    }}
+                    exit={{
+                      y: "110%",
+                      opacity: 0,
+                      transition: {
+                        delay: i * 0.03,
+                        duration: 0.25,
+                        ease: [0.76, 0, 0.24, 1],
+                      },
+                    }}
+                    className="group flex items-baseline gap-5 font-display text-[11vw] leading-none text-bone-50 sm:text-6xl"
+                    onClick={() => setOpen(false)}
+                  >
+                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent opacity-70 transition-opacity group-hover:opacity-100">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-bone-50/70">
+                      {n.label}
+                    </span>
+                  </motion.a>
+                </div>
               ))}
-              <div className="mt-10 flex flex-col gap-1 font-mono text-xs uppercase tracking-[0.2em] text-bone-300">
+
+              {/* Contact info — slides up after links */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: 0.18 + nav.length * 0.07 + 0.12, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                }}
+                exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                className="mt-12 flex flex-col gap-1 pl-[calc(11px+20px)] font-mono text-xs uppercase tracking-[0.2em] text-bone-400 sm:pl-[calc(11px+20px)]"
+              >
                 <span>{profile.email}</span>
                 <span>{profile.location}</span>
-              </div>
+              </motion.div>
             </nav>
           </motion.div>
         )}

@@ -48,8 +48,8 @@ export default function About() {
           kicker="About"
           title={
             <>
-              Engineering, automation, and the{" "}
-              <em className="italic text-gradient-accent">space between them</em>.
+              Built on curiosity,{" "}
+              <em className="italic text-gradient-accent">sharpened by work</em>.
             </>
           }
         />
@@ -77,13 +77,14 @@ export default function About() {
         </div>
 
         {/* Body — single block + focus list */}
-        <div className="mt-20 grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr]">
+        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr]">
           <div className="space-y-3 lg:sticky lg:top-32 lg:self-start">
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
-              A bit of background
+              Background
             </p>
             <h3 className="font-display text-3xl text-balance text-bone-50 sm:text-4xl">
-              Between <em className="italic">engineering</em> and operations.
+              Biomedical roots,{" "}
+              <em className="italic">software career</em>.
             </h3>
           </div>
 
@@ -95,10 +96,9 @@ export default function About() {
               transition={{ duration: 0.7, ease }}
               className="text-[17px]"
             >
-              I studied biomedical engineering, but most of my time outside class
-              ended up going into software. What started as small frontend
-              projects gradually turned into backend systems, automation
-              workflows, and AI tooling.
+              I studied biomedical engineering. Most of my time outside class
+              went into software — frontend first, then backend systems,
+              then automation workflows, then AI tooling.
             </motion.p>
 
             <motion.p
@@ -108,10 +108,9 @@ export default function About() {
               transition={{ duration: 0.7, ease, delay: 0.08 }}
               className="text-[17px]"
             >
-              Most of the work I enjoy sits somewhere between engineering and
-              operations — understanding how people actually work, where time
-              gets wasted, and where software can make things simpler or more
-              reliable.
+              The work I keep coming back to lives at the edge of engineering
+              and operations. Finding where teams lose time, then building
+              the thing that gets it back.
             </motion.p>
 
             <motion.div
@@ -122,17 +121,28 @@ export default function About() {
               className="pt-2"
             >
               <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-bone-300">
-                What I mostly build
+                What I build
               </p>
               <ul className="grid grid-cols-1 gap-y-3 sm:grid-cols-2">
-                {focus.map((f) => (
-                  <li
+                {focus.map((f, i) => (
+                  <motion.li
                     key={f}
+                    initial={{ opacity: 0, x: -12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-10% 0px" }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.22 + i * 0.07 }}
                     className="flex items-center gap-3 text-[15px] text-bone-100"
                   >
-                    <span className="h-px w-5 bg-accent/60" />
+                    <motion.span
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true, margin: "-10% 0px" }}
+                      transition={{ duration: 0.35, ease: "easeOut", delay: 0.3 + i * 0.07 }}
+                      style={{ transformOrigin: "left" }}
+                      className="block h-px w-5 flex-shrink-0 bg-accent/60"
+                    />
                     {f}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>

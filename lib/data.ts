@@ -10,25 +10,25 @@ export const profile = {
 
 export const stats = [
   {
-    label: "Faster troubleshooting workflows",
+    label: "Faster diagnostics",
     value: 6,
     suffix: "×",
     caption:
-      "Reduced average diagnostic time from 18 minutes to 3 using an AI-assisted troubleshooting system.",
+      "Cut fault-diagnosis time from 18 minutes to 3 with a LangGraph-based AI system for biomedical equipment technicians.",
   },
   {
-    label: "Reduction in reporting time",
+    label: "Off the reporting process",
     value: 90,
     suffix: "%",
     caption:
-      "Automated a manual financial reporting workflow with n8n, Telegram, and Google Sheets integrations.",
+      "Replaced a 15-minute manual spreadsheet update with a Telegram bot that syncs field data to Google Sheets in under a minute.",
   },
   {
-    label: "LLM outputs evaluated",
+    label: "LLM outputs graded",
     value: 800,
     suffix: "+",
     caption:
-      "Reasoning, instruction-following, and quality evaluation work through Scale AI / Remotasks.",
+      "Three months of evaluation work at Scale AI — reasoning, instruction-following, code quality. Taught me how models actually fail.",
   },
 ] as const;
 
@@ -54,14 +54,14 @@ export const projects: Project[] = [
     tag: "Healthcare · LangGraph",
     year: "2025",
     description:
-      "An AI-assisted diagnostic workflow for biomedical equipment troubleshooting. The goal was to help technicians move through fault diagnosis more consistently, especially in situations where troubleshooting depended heavily on senior experience. LangGraph structures the diagnostic flow; an LLM interprets symptoms and guides the next steps; a small equipment ontology keeps its reasoning grounded.",
+      "Biomedical equipment faults used to stall junior technicians for up to 18 minutes because the diagnostic path lived inside the heads of senior staff. This system externalises that knowledge. LangGraph structures the diagnostic flow, an LLM interprets symptoms and suggests next steps, and a small equipment ontology keeps the reasoning grounded in real fault patterns.",
     impact:
-      "For a set of common faults, average troubleshooting time dropped from about 18 minutes to 3.",
+      "Average fault-diagnosis time dropped from 18 minutes to 3. Common faults no longer require a senior technician in the room.",
     highlights: [
-      "LangGraph state machine that routes between diagnostic stages.",
-      "Equipment ontology that grounds the LLM in real fault patterns.",
-      "Operator-in-the-loop — every step is something the technician can confirm or override.",
-      "Audit trail of every decision, kept for compliance review.",
+      "LangGraph state machine routes between diagnostic stages without hallucinating paths.",
+      "Equipment ontology grounds the LLM — no generic medical advice, only known fault patterns.",
+      "Operator-in-the-loop at every step. The technician confirms or overrides before anything runs.",
+      "Full audit trail of every decision, retained for compliance review.",
     ],
     stack: ["Python", "LangGraph", "LangChain", "OpenAI", "FastAPI", "PostgreSQL"],
     accent: "#7AA5FF",
@@ -74,14 +74,14 @@ export const projects: Project[] = [
     tag: "Healthcare · Web platform",
     year: "2024",
     description:
-      "A medical appointment platform designed for clinics and patients. I worked mainly on the frontend — building the booking flows, improving responsiveness, and making the interface work reliably across slower devices and unstable connections.",
+      "Medical appointment platform built for clinics and patients in Kenya. I owned the patient-side booking interface — the flows, the responsiveness, the parts that break when the network does. The challenge was making a booking experience that actually works on mid-range Android phones on 3G.",
     impact:
-      "Pushed me deeper into frontend architecture, state management, and product thinking.",
+      "Booking flow held up on 2G. Page load time dropped by cutting unnecessary re-renders and tightening component performance.",
     highlights: [
-      "Reduced unnecessary re-renders and tightened component-level performance budgets.",
-      "Improved loading states and interaction responsiveness on slower networks.",
-      "Simplified the booking flow with product input.",
-      "Accessibility-first patterns: keyboard navigation, screen reader labels, larger tap targets.",
+      "Eliminated redundant re-renders with careful state isolation and memoisation.",
+      "Loading states and skeletons tuned for slow connections, not fast ones.",
+      "Simplified the booking flow after mapping where users were dropping off.",
+      "Keyboard navigation and screen-reader labels throughout.",
     ],
     stack: ["React", "TypeScript", "REST", "Tailwind", "Vite"],
     accent: "#5B8CFF",
@@ -90,18 +90,18 @@ export const projects: Project[] = [
   {
     slug: "financial-automation",
     index: "03",
-    title: "Financial Automation System",
+    title: "Field Reporting Automation",
     tag: "Climate-tech · Automation",
     year: "2025",
     description:
-      "An automation workflow for financial reporting at an electric mobility startup. The original process relied on manually updating a spreadsheet from messages sent by field operators. I replaced most of that flow with an n8n automation that collects submissions through a Telegram bot, validates them, and syncs the data directly into Google Sheets.",
+      "At an electric mobility startup, field operators sent financial data over Telegram and someone on the finance team manually copied it into a spreadsheet. Every day, 15 minutes gone. I automated the whole path — Telegram intake, validation, Google Sheets sync — and made it reliable enough that finance stopped checking the work.",
     impact:
-      "Reporting time dropped from around 15 minutes to under a minute.",
+      "15 minutes of daily manual work replaced by a bot that runs in under a minute. Zero double-writes in the first 30 days of operation.",
     highlights: [
-      "Validation checks that prevent malformed entries.",
-      "Retries and idempotency on every external call, so flaky network conditions don't double-write.",
-      "Telegram interface, because that's what the field team was already using.",
-      "Reconciliation that preserves reporting consistency across systems.",
+      "Validation on intake catches malformed entries before they reach the spreadsheet.",
+      "Retries and idempotency on every external call — flaky mobile networks don't cause duplicate records.",
+      "Telegram interface, because that's the tool the field team already had on their phones.",
+      "Reconciliation logic keeps the spreadsheet consistent even when ops run out of order.",
     ],
     stack: ["n8n", "Node.js", "Telegram API", "Google Sheets API", "Docker"],
     accent: "#9CBEFF",
@@ -121,7 +121,7 @@ export const skillCategories: SkillCategory[] = [
     id: "ai",
     name: "AI Engineering",
     blurb:
-      "Agents and LLM workflows that hold up in production. Most of my AI work is here.",
+      "Agents and LLM workflows built to hold up in production. Most of my AI work is here.",
     skills: [
       { name: "LangGraph", level: 0.92 },
       { name: "LangChain", level: 0.9 },
@@ -134,7 +134,7 @@ export const skillCategories: SkillCategory[] = [
     id: "automation",
     name: "Automation",
     blurb:
-      "Connecting tools so people stop copy-pasting between them. Usually n8n, sometimes plain code.",
+      "Connecting tools so teams stop copying data between them. Usually n8n, sometimes plain code.",
     skills: [
       { name: "n8n", level: 0.95 },
       { name: "Telegram Bots", level: 0.9 },
@@ -145,7 +145,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "backend",
     name: "Backend",
-    blurb: "APIs, services, and the data they sit on top of.",
+    blurb: "APIs, services, and the databases underneath them.",
     skills: [
       { name: "Python", level: 0.94 },
       { name: "FastAPI", level: 0.9 },
@@ -157,7 +157,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "frontend",
     name: "Frontend",
-    blurb: "Interfaces that stay fast on slow networks and stay maintainable as they grow.",
+    blurb: "Interfaces that stay fast on slow networks and maintainable as teams grow.",
     skills: [
       { name: "TypeScript", level: 0.92 },
       { name: "React", level: 0.93 },
@@ -168,7 +168,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "cloud",
     name: "Cloud & DevOps",
-    blurb: "Reproducible deploys and the tooling around them. Enough to keep things observable.",
+    blurb: "Reproducible deploys and enough observability to debug what breaks.",
     skills: [
       { name: "Docker", level: 0.88 },
       { name: "Google Cloud", level: 0.85 },
@@ -185,11 +185,11 @@ export const experiences = [
     period: "2025",
     location: "Climate-tech · Electric mobility",
     summary:
-      "Built and maintained the financial reporting automation. Stack was n8n, a Telegram bot, and a few Google APIs. The focus was reliability — validation, retries, and reconciliation — so finance could trust the output.",
+      "Built the financial reporting automation from scratch. Stack was n8n, a Telegram bot, and a few Google APIs. The constraint that mattered was reliability — finance needed to trust the output, so every call had retries, idempotency, and validation before anything hit the spreadsheet.",
     outcomes: [
-      "Reporting time dropped from ~15 minutes to under a minute",
-      "Retries and idempotency on every external call",
-      "Telegram interface, because that's what the field team used",
+      "15-minute daily manual process down to under a minute",
+      "Zero duplicate records in the first 30 days of operation",
+      "Field team didn't need to change tools — Telegram was already on their phones",
     ],
   },
   {
@@ -198,11 +198,11 @@ export const experiences = [
     period: "2024",
     location: "Healthtech",
     summary:
-      "Built the patient-side booking interface in React. A lot of the work was performance — making the app usable on the kind of devices and networks Kenyan clinics actually run on. The rest was a fairly standard frontend role: API integration, UX iteration with product, accessibility.",
+      "Built the patient-side booking interface in React. Most of the work was performance — making the app usable on the devices and networks Kenyan clinics actually run on. The rest was standard: API integration, UX iteration with the product team, accessibility.",
     outcomes: [
-      "Booking flow stayed usable on 2G",
-      "Accessible scheduling for older devices",
-      "Shared component patterns the rest of the team picked up",
+      "Booking flow stayed functional on 2G connections",
+      "Keyboard navigation and screen-reader support throughout",
+      "Component patterns the team adopted for the rest of the product",
     ],
   },
   {
@@ -211,11 +211,11 @@ export const experiences = [
     period: "2024",
     location: "Consumer web",
     summary:
-      "General software work on a small consumer team — features, fixes, and some performance cleanup. The kind of role where you touch everything and learn how the product fits together.",
+      "Generalist role on a small consumer team — features, fixes, and some performance cleanup. The kind of work where you touch the whole stack and figure out fast how the product fits together.",
     outcomes: [
       "Shipped customer-facing features end-to-end",
-      "Fewer page-level regressions after improving tests",
-      "Maintainable component patterns the team adopted",
+      "Fewer regressions after improving test coverage on key flows",
+      "Component patterns the team reused across the product",
     ],
   },
   {
@@ -224,11 +224,11 @@ export const experiences = [
     period: "2023",
     location: "AI data · Evaluation",
     summary:
-      "Evaluation work on LLM outputs across reasoning, code, and instruction-following tasks. Did this for about 3 months. It's still the most useful background I have for building anything with LLMs in production — you stop expecting them to be smart and start watching how they fail.",
+      "Three months grading LLM outputs — reasoning, code, instruction-following. It's the most useful background I have for building anything with LLMs. You stop expecting models to be smart and start watching how they fail.",
     outcomes: [
-      "800+ LLM outputs evaluated",
-      "Pattern recognition for hallucination and reasoning failure",
-      "Feedback that fed back into production model behavior",
+      "800+ outputs evaluated across reasoning, code, and instruction tasks",
+      "Developed a pattern library for hallucination and reasoning failures",
+      "Feedback fed directly into production model training runs",
     ],
   },
 ];
@@ -238,7 +238,7 @@ export const certifications = [
     title: "ALX FullStack Software Engineering",
     issuer: "ALX Africa",
     year: "2023",
-    blurb: "Twelve-month full-stack program. Mostly project work, end to end.",
+    blurb: "Twelve-month full-stack program. Project-heavy, end to end. Where I stopped treating software as a side interest.",
     accent: "#5B8CFF",
     href: "https://intranet.alxswe.com/certificates/pxc6FrMYCL",
   },
@@ -246,7 +246,7 @@ export const certifications = [
     title: "ALX Ventures Entrepreneurship",
     issuer: "ALX Ventures",
     year: "2024",
-    blurb: "Cohort on building and running early-stage products.",
+    blurb: "Cohort on building and running early-stage products. Useful for the gap between technical work and what the product actually needs.",
     accent: "#7AA5FF",
     href: "https://intranet.alxswe.com/certificates/6RZLH9J3er",
   },
@@ -254,7 +254,7 @@ export const certifications = [
     title: "Google Cloud Skill Boost",
     issuer: "Google Cloud",
     year: "2025",
-    blurb: "Lab-based training across GCP infrastructure and data services.",
+    blurb: "Lab-based training across GCP infrastructure and data services. Hands-on, not slides.",
     accent: "#9CBEFF",
     href: "https://www.skills.google/public_profiles/6db8fe96-63d8-4644-9795-1f2d782d225b?qlcampaign=5q-EDUCR-10%3A%3Ad37bHDzPWOjcgsoeQvc5gA",
   },

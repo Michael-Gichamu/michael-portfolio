@@ -36,13 +36,13 @@ export default function Certifications() {
             href={featured.href}
             target="_blank"
             rel="noreferrer"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, clipPath: "inset(0 100% 0 0 round 16px)" }}
+            whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0 round 16px)" }}
             viewport={{ once: true, margin: "-15% 0px" }}
-            transition={{ duration: 0.7, ease }}
+            transition={{ duration: 0.85, ease }}
             className="group block focus-visible:outline-none md:row-span-2"
           >
-            <GlassCard className="flex h-full flex-col justify-between p-7 sm:p-9 transition-transform duration-300 group-hover:-translate-y-1 group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-accent/60">
+            <GlassCard tilt className="flex h-full flex-col justify-between p-7 sm:p-9 group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-accent/60">
               {/* Top */}
               <div>
                 <div className="flex items-start justify-between">
@@ -84,13 +84,13 @@ export default function Certifications() {
               href={c.href}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, clipPath: "inset(100% 0 0 0 round 16px)" }}
+              whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0 round 16px)" }}
               viewport={{ once: true, margin: "-15% 0px" }}
-              transition={{ duration: 0.7, ease, delay: (i + 1) * 0.07 }}
+              transition={{ duration: 0.7, ease, delay: 0.12 + i * 0.1 }}
               className="group block focus-visible:outline-none"
             >
-              <GlassCard className="h-full p-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-accent/60">
+              <GlassCard tilt className="h-full p-6 group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-accent/60">
                 <div className="flex items-start justify-between">
                   <Seal color={c.accent} size="sm" />
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone-300">
