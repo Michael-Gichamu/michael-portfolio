@@ -55,8 +55,13 @@ export default function Experience() {
                   </div>
                 </div>
 
-                {/* Node */}
-                <span className="absolute left-2 top-2 h-2 w-2 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_0_6px_rgba(91,140,255,0.12)] md:left-[120px]" />
+                {/* Node — living pulse ring; the halo uses CSS animation so it runs off main thread */}
+                <span className="absolute left-2 top-2 -translate-x-1/2 md:left-[120px]">
+                  <span className="relative flex h-2.5 w-2.5 items-center justify-center">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-20" />
+                    <span className="relative block h-2 w-2 rounded-full bg-accent" />
+                  </span>
+                </span>
 
                 {/* Content */}
                 <div className="md:pl-12">
@@ -72,11 +77,13 @@ export default function Experience() {
                   <p className="mt-4 max-w-2xl leading-relaxed text-bone-200">
                     {e.summary}
                   </p>
+                  {/* Emil: every interactive-looking element needs a hover state;
+                      pill tags look clickable so they get a tactile response */}
                   <ul className="mt-5 flex flex-wrap gap-2">
                     {e.outcomes.map((o) => (
                       <li
                         key={o}
-                        className="rounded-full border border-white/8 bg-white/[0.02] px-3 py-1.5 text-xs text-bone-200"
+                        className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-xs text-bone-200 transition-[border-color,background-color,color] duration-200 hover:border-accent/30 hover:bg-accent/[0.06] hover:text-bone-50"
                       >
                         {o}
                       </li>

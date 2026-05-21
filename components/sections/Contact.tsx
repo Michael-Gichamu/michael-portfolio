@@ -8,33 +8,60 @@ import { cn } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+// Safe to ship in client code — Web3Forms access keys are routing keys, not secrets.
+// Set NEXT_PUBLIC_WEB3FORMS_KEY in .env.local (dev) and in your Vercel env vars (prod).
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+
 export default function Contact() {
-  const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const name = String(data.get("name") ?? "");
-    const email = String(data.get("email") ?? "");
-    const message = String(data.get("message") ?? "");
-    setState("sending");
 
-    // Copy a clean, ready-to-send message to the clipboard — no mail client
-    // is opened, so the user is never interrupted by an OS prompt.
-    const payload = `From: ${name} <${email}>\n\n${message}`;
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(payload);
-      }
-    } catch {
-      /* clipboard may be blocked; submission state still proceeds */
+    // Graceful degradation when the env var hasn't been set yet.
+    if (!WEB3FORMS_KEY) {
+      setErrorMsg(
+        `Form not configured — email ${profile.email} directly and I'll reply within 24 h.`
+      );
+      setState("error");
+      return;
     }
 
-    setTimeout(() => {
-      setState("sent");
-      form.reset();
-    }, 320);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const senderName = String(data.get("name") ?? "Someone");
+
+    // Web3Forms required + optional fields
+    data.append("access_key", WEB3FORMS_KEY);
+    data.append("subject", `Portfolio contact from ${senderName}`);
+    data.append("from_name", "Portfolio Contact Form");
+    // Redirect Web3Forms' thank-you page back to ourselves (we handle the UI)
+    data.append("redirect", "false");
+
+    setState("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
+      const json: { success: boolean; message?: string } = await res.json();
+      if (json.success) {
+        setState("sent");
+        form.reset();
+      } else {
+        throw new Error(json.message ?? "Submission failed — please try again.");
+      }
+    } catch (err) {
+      setErrorMsg(
+        err instanceof Error
+          ? err.message
+          : `Something went wrong — email ${profile.email} directly.`
+      );
+      setState("error");
+    }
   };
 
   return (
@@ -88,6 +115,7 @@ export default function Contact() {
 
         <motion.form
           onSubmit={onSubmit}
+          onChange={() => { if (state === "sent" || state === "error") setState("idle"); }}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
@@ -108,17 +136,34 @@ export default function Contact() {
             />
           </div>
 
+          {/* Error banner */}
+          {state === "error" && errorMsg && (
+            <motion.p
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300"
+            >
+              {errorMsg}
+            </motion.p>
+          )}
+
           <div className="mt-7 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone-300">
               {state === "sent"
-                ? `Copied to clipboard — paste into an email to ${profile.email}`
-                : `Replies usually within 24h · ${profile.location}`}
+                ? "Message delivered — I'll reply within 24 h."
+                : `Replies usually within 24 h · ${profile.location}`}
             </span>
-            <MagneticButton variant="primary" type="submit" disabled={state !== "idle"}>
+            <MagneticButton
+              variant="primary"
+              type="submit"
+              disabled={state === "sending" || state === "sent"}
+            >
               {state === "sending"
                 ? "Sending…"
                 : state === "sent"
                 ? "Sent ✓"
+                : state === "error"
+                ? "Try again"
                 : "Send message"}
               <Arrow />
             </MagneticButton>
