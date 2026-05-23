@@ -28,7 +28,7 @@ export const stats = [
     value: 800,
     suffix: "+",
     caption:
-      "Three months of evaluation work at Scale AI — reasoning, instruction-following, code quality. Taught me how models actually fail.",
+      "Three months of evaluation work at Scale AI: reasoning, instruction-following, code quality. Taught me how models actually fail.",
   },
 ] as const;
 
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     tag: "Healthcare · Web platform",
     year: "2024",
     description:
-      "Medical appointment platform built for clinics and patients in Kenya. I owned the patient-side booking interface — the flows, the responsiveness, the parts that break when the network does. The challenge was making a booking experience that actually works on mid-range Android phones on 3G.",
+      "Medical appointment platform built for clinics and patients in Kenya. I owned the patient-side booking interface: the flows, the responsiveness, and the parts that break when the network does. The challenge was making a booking experience that actually works on mid-range Android phones on 3G.",
     impact:
       "Booking flow held up on 2G. Page load time dropped by cutting unnecessary re-renders and tightening component performance.",
     highlights: [
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     tag: "Climate-tech · Automation",
     year: "2025",
     description:
-      "At an electric mobility startup, field operators sent financial data over Telegram and someone on the finance team manually copied it into a spreadsheet. Every day, 15 minutes gone. I automated the whole path — Telegram intake, validation, Google Sheets sync — and made it reliable enough that finance stopped checking the work.",
+      "At an electric mobility startup, field operators sent financial data over Telegram and someone on the finance team manually copied it into a spreadsheet. Every day, 15 minutes gone. I automated the whole path (Telegram intake, validation, Google Sheets sync) and made it reliable enough that finance stopped checking the work.",
     impact:
       "15 minutes of daily manual work replaced by a bot that runs in under a minute. Zero double-writes in the first 30 days of operation.",
     highlights: [
@@ -185,7 +185,7 @@ export const experiences = [
     period: "2025",
     location: "Climate-tech · Electric mobility",
     summary:
-      "Built the financial reporting automation from scratch. Stack was n8n, a Telegram bot, and a few Google APIs. The constraint that mattered was reliability — finance needed to trust the output, so every call had retries, idempotency, and validation before anything hit the spreadsheet.",
+      "Built the financial reporting automation from scratch. Stack was n8n, a Telegram bot, and a few Google APIs. The constraint that mattered was reliability: finance needed to trust the output, so every call had retries, idempotency, and validation before anything hit the spreadsheet.",
     outcomes: [
       "15-minute daily manual process down to under a minute",
       "Zero duplicate records in the first 30 days of operation",
@@ -198,7 +198,7 @@ export const experiences = [
     period: "2024",
     location: "Healthtech",
     summary:
-      "Built the patient-side booking interface in React. Most of the work was performance — making the app usable on the devices and networks Kenyan clinics actually run on. The rest was standard: API integration, UX iteration with the product team, accessibility.",
+      "Built the patient-side booking interface in React. Most of the work was performance: making the app usable on the devices and networks Kenyan clinics actually run on. The rest was standard API integration, UX iteration with the product team, and accessibility.",
     outcomes: [
       "Booking flow stayed functional on 2G connections",
       "Keyboard navigation and screen-reader support throughout",
@@ -211,7 +211,7 @@ export const experiences = [
     period: "2024",
     location: "Consumer web",
     summary:
-      "Generalist role on a small consumer team — features, fixes, and some performance cleanup. The kind of work where you touch the whole stack and figure out fast how the product fits together.",
+      "Generalist role on a small consumer team: features, fixes, and some performance cleanup. The kind of work where you touch the whole stack and figure out fast how the product fits together.",
     outcomes: [
       "Shipped customer-facing features end-to-end",
       "Fewer regressions after improving test coverage on key flows",
@@ -224,7 +224,7 @@ export const experiences = [
     period: "2023",
     location: "AI data · Evaluation",
     summary:
-      "Three months grading LLM outputs — reasoning, code, instruction-following. It's the most useful background I have for building anything with LLMs. You stop expecting models to be smart and start watching how they fail.",
+      "Three months grading LLM outputs: reasoning, code, instruction-following. The most useful background I have for building anything with LLMs. You stop expecting models to be smart and start watching how they fail.",
     outcomes: [
       "800+ outputs evaluated across reasoning, code, and instruction tasks",
       "Developed a pattern library for hallucination and reasoning failures",

@@ -26,7 +26,7 @@ export default function Skills() {
               <em className="italic text-gradient-accent">actually use</em>.
             </>
           }
-          description="Grouped by what I use them for. Not exhaustive — these are the ones I reach for most weeks."
+          description="Grouped by what I use them for. Not exhaustive: these are the ones I reach for most weeks."
         />
 
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[300px_1fr]">

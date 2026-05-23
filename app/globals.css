@@ -125,7 +125,7 @@ body {
   }
 
   .section-pad {
-    padding-block: clamp(2rem, 5vw, 4.5rem);
+    padding-block: clamp(1.5rem, 4vw, 3.5rem);
   }
 
   .mesh-bg {

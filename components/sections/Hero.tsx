@@ -92,7 +92,7 @@ export default function Hero() {
                   {line.words.map((word, wi) => (
                     <span
                       key={wi}
-                      className="inline-block overflow-hidden pt-[0.18em] pb-[0.1em] px-[0.02em] align-bottom"
+                      className="inline-block overflow-hidden pt-[0.3em] pb-[0.12em] px-[0.04em] align-bottom"
                     >
                       <motion.span
                         initial={{ y: "120%", opacity: 0 }}
@@ -126,7 +126,7 @@ export default function Hero() {
             transition={{ delay: 2.6, duration: 0.8, ease }}
             className="mt-8 max-w-md text-base leading-relaxed text-bone-300 sm:text-lg"
           >
-            Nairobi-based. I build the systems that cut manual work —
+            Nairobi-based. I build the systems that cut manual work:
             AI agents, automation pipelines, and the web products that run on top of them.
           </motion.p>
 

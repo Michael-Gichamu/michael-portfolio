@@ -22,7 +22,7 @@ export default function Contact() {
     // Graceful degradation when the env var hasn't been set yet.
     if (!WEB3FORMS_KEY) {
       setErrorMsg(
-        `Form not configured — email ${profile.email} directly and I'll reply within 24 h.`
+        `Form not configured. Email ${profile.email} directly and I'll reply within 24 h.`
       );
       setState("error");
       return;
@@ -63,13 +63,13 @@ export default function Contact() {
         setState("sent");
         form.reset();
       } else {
-        throw new Error(json.message ?? "Submission failed — please try again.");
+        throw new Error(json.message ?? "Submission failed. Please try again.");
       }
     } catch (err) {
       setErrorMsg(
         err instanceof Error
           ? err.message
-          : `Something went wrong — email ${profile.email} directly.`
+          : `Something went wrong. Email ${profile.email} directly.`
       );
       setState("error");
     }
@@ -172,7 +172,7 @@ export default function Contact() {
           <div className="mt-7 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone-300">
               {state === "sent"
-                ? "Message delivered — I'll reply within 24 h."
+                ? "Message delivered. I'll reply within 24 h."
                 : `Replies usually within 24 h · ${profile.location}`}
             </span>
             <MagneticButton
