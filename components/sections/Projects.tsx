@@ -59,31 +59,19 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
   return (
     <article
       ref={ref}
-      className={cn(
-        "grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16",
-        reverse && "lg:[&>*:first-child]:order-2"
-      )}
+      className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16"
     >
-      {/* Visual — clip-path sweep up from bottom edge */}
-      <motion.div
-        style={{ y: visualY }}
-        initial={{ opacity: 0, clipPath: "inset(100% 0 0 0 round 16px)" }}
-        whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0 round 16px)" }}
-        viewport={{ once: true, margin: "-10% 0px" }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="will-change-transform"
-      >
-        <ProjectVisual project={project} />
-      </motion.div>
-
-      {/* Copy */}
+      {/* Copy — mobile: first (above demo); desktop: col position varies with reverse */}
       <motion.div
         style={{ y: textY }}
         initial={{ opacity: 0, x: reverse ? -24 : 24 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
-        className="flex flex-col gap-5 will-change-transform"
+        className={cn(
+          "order-1 flex flex-col gap-5 will-change-transform",
+          reverse ? "lg:order-1" : "lg:order-2"
+        )}
       >
         <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-bone-300">
           <span className="text-accent">{project.index}</span>
@@ -133,6 +121,21 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
             </span>
           ))}
         </div>
+      </motion.div>
+
+      {/* Visual — mobile: second (below copy); desktop: col position varies with reverse */}
+      <motion.div
+        style={{ y: visualY }}
+        initial={{ opacity: 0, clipPath: "inset(100% 0 0 0 round 16px)" }}
+        whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0 round 16px)" }}
+        viewport={{ once: true, margin: "-10% 0px" }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className={cn(
+          "order-2 will-change-transform",
+          reverse ? "lg:order-2" : "lg:order-1"
+        )}
+      >
+        <ProjectVisual project={project} />
       </motion.div>
     </article>
   );

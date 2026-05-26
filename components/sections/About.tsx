@@ -15,7 +15,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const focus = [
   "Internal tools",
-  "AI-assisted workflows",
+  "AI-augmented workflows",
   "Automation systems",
   "Modern web applications",
 ];
@@ -109,8 +109,8 @@ export default function About() {
               className="text-[17px]"
             >
               The work I keep coming back to lives at the edge of engineering
-              and operations. Finding where teams lose time, then building
-              the thing that gets it back.
+              and operations. Finding where teams lose capacity or leave revenue
+              on the table, then building the systems that recover both.
             </motion.p>
 
             <motion.div

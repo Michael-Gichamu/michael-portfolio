@@ -56,7 +56,7 @@ export const projects: Project[] = [
     description:
       "Biomedical equipment faults used to stall junior technicians for up to 18 minutes because the diagnostic path lived inside the heads of senior staff. This system externalises that knowledge. LangGraph structures the diagnostic flow, an LLM interprets symptoms and suggests next steps, and a small equipment ontology keeps the reasoning grounded in real fault patterns.",
     impact:
-      "Average fault-diagnosis time dropped from 18 minutes to 3. Common faults no longer require a senior technician in the room.",
+      "Average fault-diagnosis time dropped from 18 minutes to 3. Most faults no longer require a senior technician in the room.",
     highlights: [
       "LangGraph state machine routes between diagnostic stages without hallucinating paths.",
       "Equipment ontology grounds the LLM — no generic medical advice, only known fault patterns.",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     highlights: [
       "Eliminated redundant re-renders with careful state isolation and memoisation.",
       "Loading states and skeletons tuned for slow connections, not fast ones.",
-      "Simplified the booking flow after mapping where users were dropping off.",
+      "Streamlined the booking flow to reduce steps from first visit to confirmed appointment.",
       "Keyboard navigation and screen-reader labels throughout.",
     ],
     stack: ["React", "TypeScript", "REST", "Tailwind", "Vite"],
@@ -207,15 +207,15 @@ export const experiences = [
   },
   {
     company: "Petshelpful",
-    role: "Software Engineer",
+    role: "DevOps Engineer",
     period: "2024",
     location: "Consumer web",
     summary:
-      "Generalist role on a small consumer team: features, fixes, and some performance cleanup. The kind of work where you touch the whole stack and figure out fast how the product fits together.",
+      "DevOps-focused role on a small consumer product team. Owned the deployment infrastructure and release pipeline that kept the engineering team shipping reliably.",
     outcomes: [
-      "Shipped customer-facing features end-to-end",
-      "Fewer regressions after improving test coverage on key flows",
-      "Component patterns the team reused across the product",
+      "Managed CI/CD pipeline and deployment workflows end-to-end",
+      "Maintained environment consistency across dev, staging, and production",
+      "Reduced release friction so the product team could ship faster",
     ],
   },
   {
@@ -246,7 +246,7 @@ export const certifications = [
     title: "ALX Ventures Entrepreneurship",
     issuer: "ALX Ventures",
     year: "2024",
-    blurb: "Cohort on building and running early-stage products. Useful for the gap between technical work and what the product actually needs.",
+    blurb: "Cohort on building and running early-stage products. Sharpened how I translate user needs and business goals into what actually gets built.",
     accent: "#7AA5FF",
     href: "https://intranet.alxswe.com/certificates/6RZLH9J3er",
   },
@@ -254,7 +254,7 @@ export const certifications = [
     title: "Google Cloud Skill Boost",
     issuer: "Google Cloud",
     year: "2025",
-    blurb: "Lab-based training across GCP infrastructure and data services. Hands-on, not slides.",
+    blurb: "Lab-based training across GCP infrastructure and data services.",
     accent: "#9CBEFF",
     href: "https://www.skills.google/public_profiles/6db8fe96-63d8-4644-9795-1f2d782d225b?qlcampaign=5q-EDUCR-10%3A%3Ad37bHDzPWOjcgsoeQvc5gA",
   },

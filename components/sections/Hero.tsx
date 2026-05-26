@@ -126,8 +126,9 @@ export default function Hero() {
             transition={{ delay: 2.6, duration: 0.8, ease }}
             className="mt-8 max-w-md text-base leading-relaxed text-bone-300 sm:text-lg"
           >
-            Nairobi-based. I build the systems that cut manual work:
-            AI agents, automation pipelines, and the web products that run on top of them.
+            I build the systems that drive operational efficiency at scale:
+            AI-augmented workflows, automation pipelines, and the software
+            that helps teams handle more volume and grow without adding headcount.
           </motion.p>
 
           <motion.div

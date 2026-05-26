@@ -13,12 +13,12 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 export const metadata: Metadata = {
   title: "Michael Gichamu — Software Engineer & AI Automation Specialist",
   description:
-    "Software engineer in Nairobi. I build internal tools, AI-assisted workflows, and automation for small operational teams.",
+    "Software engineer specialising in AI-augmented workflows and automation systems. I build the tools that drive operational efficiency for small and mid-sized teams.",
   metadataBase: new URL("https://michaelgichamu.tech"),
   openGraph: {
     title: "Michael Gichamu — Software Engineer & AI Automation",
     description:
-      "Internal tools, AI-assisted workflows, and automation for small operational teams.",
+      "AI-augmented workflows, automation systems, and the software that drives operational efficiency.",
     type: "website",
   },
   twitter: { card: "summary_large_image" },
