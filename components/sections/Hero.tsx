@@ -61,7 +61,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-noise opacity-[0.04]" />
 
       {/* Main content — top meta + headline pushed to center-bottom */}
-      <div className="container-page relative z-10 flex min-h-[100svh] flex-col justify-between pt-28 pb-40 sm:pt-32 sm:pb-44">
+      <div className="container-page relative z-10 flex min-h-[100svh] flex-col justify-between pt-28 pb-24 sm:pt-32 sm:pb-28">
         {/* Top meta strip */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -150,7 +150,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator — pinned just above the marquee, never crowded */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-20 z-10 flex justify-center sm:bottom-24">
+      <div className="pointer-events-none absolute inset-x-0 bottom-14 z-10 flex justify-center sm:bottom-16">
         <ScrollIndicator />
       </div>
 
