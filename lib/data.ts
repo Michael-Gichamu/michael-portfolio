@@ -80,7 +80,7 @@ export const projects: Project[] = [
     highlights: [
       "Eliminated redundant re-renders with careful state isolation and memoisation.",
       "Loading states and skeletons tuned for slow connections, not fast ones.",
-      "Streamlined the booking flow to reduce steps from first visit to confirmed appointment.",
+      "Simplified the booking flow so patients could confirm appointments in fewer steps.",
       "Keyboard navigation and screen-reader labels throughout.",
     ],
     stack: ["React", "TypeScript", "REST", "Tailwind", "Vite"],
