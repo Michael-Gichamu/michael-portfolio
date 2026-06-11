@@ -149,7 +149,7 @@ function ProjectVisual({ project }: { project: Project }) {
   if (project.visual === "slideshow" && project.slides) {
     return (
       <div className="w-full">
-        <Slideshow items={project.slides} caption={project.tag} />
+        <Slideshow items={project.slides} caption={project.tag} fit="contain" />
       </div>
     );
   }

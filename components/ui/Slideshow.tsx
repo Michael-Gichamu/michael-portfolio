@@ -16,6 +16,9 @@ interface SlideshowProps {
   /** ms between auto-advances. Pass 0 to disable. */
   interval?: number;
   caption?: string;
+  /** "cover" crops to fill (good for tall UI shots); "contain" shows the whole
+   * image letterboxed (good for wide desktop screenshots). Defaults to "cover". */
+  fit?: "cover" | "contain";
 }
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -29,6 +32,7 @@ export default function Slideshow({
   className,
   interval = 4000,
   caption,
+  fit = "cover",
 }: SlideshowProps) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -69,7 +73,7 @@ export default function Slideshow({
               alt={current.label}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className={fit === "contain" ? "object-contain" : "object-cover"}
               priority={index === 0}
             />
             {/* Bottom gradient for caption legibility */}

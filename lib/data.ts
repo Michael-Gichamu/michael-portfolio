@@ -55,14 +55,13 @@ export const projects: Project[] = [
     tag: "HR & Staffing · Email AI",
     year: "2026",
     description:
-      "Specific Talent Ltd is an HR and staffing company supporting brands like Quickmart, Carrefour, Decathlon, and Pharmaplus. Their team handled high email volume where genuinely urgent messages were easy to lose inside a manually-sorted inbox. I upgraded their email infrastructure so the conversations that matter surface first, and the routine handling stops eating the team's day.",
+      "Specific Talent Ltd is an HR and staffing company supporting brands like Quickmart, Carrefour, Decathlon, and Pharmaplus. Their team handled high email volume where genuinely urgent messages were easy to lose inside a manually-sorted inbox. I upgraded their email infrastructure so the conversations that matter surface first, and routine handling no longer drains the team's time.",
     impact:
       "The team identifies priority communications faster, handles far less manual inbox triage, and keeps response cycles tight on the conversations that move the business.",
     highlights: [
       "Priority communications surface first, so the team acts on what matters before it goes cold.",
       "Manual inbox handling cut down across high-volume daily email.",
       "Faster, more consistent response cycles on critical business conversations.",
-      "Supports a live staffing operation serving Quickmart, Carrefour, Decathlon, and Pharmaplus.",
     ],
     accent: "#7AA5FF",
     visual: "slideshow",
@@ -76,7 +75,7 @@ export const projects: Project[] = [
     index: "02",
     title: "AI-Augmented Troubleshooting System",
     tag: "Healthcare · LangGraph",
-    year: "2025",
+    year: "2026",
     description:
       "Biomedical equipment faults used to stall junior technicians for up to 18 minutes because the diagnostic path lived inside the heads of senior staff. This system externalises that knowledge. LangGraph structures the diagnostic flow, an LLM interprets symptoms and suggests next steps, and a small equipment ontology keeps the reasoning grounded in real fault patterns.",
     impact:
