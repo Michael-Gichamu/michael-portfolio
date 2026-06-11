@@ -28,7 +28,7 @@ export const stats = [
     value: 800,
     suffix: "+",
     caption:
-      "Three months of evaluation work at Scale AI: reasoning, instruction-following, code quality. Taught me how models actually fail.",
+      "Evaluation work at Scale AI: reasoning, instruction-following, code quality. Taught me how models actually fail.",
   },
 ] as const;
 
@@ -41,15 +41,39 @@ export type Project = {
   description: string;
   impact: string;
   highlights: string[];
-  stack: string[];
+  stack?: string[];
   accent: string;
-  visual: "medtech" | "ai-graph" | "automation";
+  visual: "medtech" | "ai-graph" | "automation" | "slideshow";
+  slides?: { src: string; label: string }[];
 };
 
 export const projects: Project[] = [
   {
-    slug: "ai-troubleshooting",
+    slug: "specific-talent-email",
     index: "01",
+    title: "AI Email Infrastructure",
+    tag: "HR & Staffing · Email AI",
+    year: "2026",
+    description:
+      "Specific Talent Ltd is an HR and staffing company supporting brands like Quickmart, Carrefour, Decathlon, and Pharmaplus. Their team handled high email volume where genuinely urgent messages were easy to lose inside a manually-sorted inbox. I upgraded their email infrastructure so the conversations that matter surface first, and the routine handling stops eating the team's day.",
+    impact:
+      "The team identifies priority communications faster, handles far less manual inbox triage, and keeps response cycles tight on the conversations that move the business.",
+    highlights: [
+      "Priority communications surface first, so the team acts on what matters before it goes cold.",
+      "Manual inbox handling cut down across high-volume daily email.",
+      "Faster, more consistent response cycles on critical business conversations.",
+      "Supports a live staffing operation serving Quickmart, Carrefour, Decathlon, and Pharmaplus.",
+    ],
+    accent: "#7AA5FF",
+    visual: "slideshow",
+    slides: [
+      { src: "/specific-talent/01-custom-rules.png", label: "Custom AI rules" },
+      { src: "/specific-talent/02-assistant.png", label: "Assistant & settings" },
+    ],
+  },
+  {
+    slug: "ai-troubleshooting",
+    index: "02",
     title: "AI-Augmented Troubleshooting System",
     tag: "Healthcare · LangGraph",
     year: "2025",
@@ -69,7 +93,7 @@ export const projects: Project[] = [
   },
   {
     slug: "medappoint",
-    index: "02",
+    index: "03",
     title: "MedAppoint",
     tag: "Healthcare · Web platform",
     year: "2024",
@@ -89,7 +113,7 @@ export const projects: Project[] = [
   },
   {
     slug: "financial-automation",
-    index: "03",
+    index: "04",
     title: "Field Reporting Automation",
     tag: "Climate-tech · Automation",
     year: "2025",
@@ -224,7 +248,7 @@ export const experiences = [
     period: "2023",
     location: "AI data · Evaluation",
     summary:
-      "Three months grading LLM outputs: reasoning, code, instruction-following. The most useful background I have for building anything with LLMs. You stop expecting models to be smart and start watching how they fail.",
+      "Graded LLM outputs across reasoning, code, and instruction-following. The most useful background I have for building anything with LLMs. You stop expecting models to be smart and start watching how they fail.",
     outcomes: [
       "800+ outputs evaluated across reasoning, code, and instruction tasks",
       "Developed a pattern library for hallucination and reasoning failures",

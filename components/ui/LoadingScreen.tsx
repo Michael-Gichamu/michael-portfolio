@@ -53,7 +53,7 @@ export default function LoadingScreen() {
               animate={{ y: 0, opacity: 1, transition: { delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] } }}
               className="font-mono text-[11px] uppercase tracking-[0.22em] text-bone-300"
             >
-              Michael Gichamu — Portfolio
+              Michael Gichamu · Profile
             </motion.span>
             <div className="overflow-hidden">
               <motion.span

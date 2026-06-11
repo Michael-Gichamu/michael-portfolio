@@ -19,11 +19,11 @@ test.describe("Portfolio smoke", () => {
     }
   });
 
-  test("AI-Augmented Troubleshooting is the first project", async ({ page }) => {
+  test("the email infrastructure project leads the work section", async ({ page }) => {
     await page.goto("/");
     await page.locator("#work").scrollIntoViewIfNeeded();
     const projectTitles = page.locator("#work h3");
-    await expect(projectTitles.first()).toContainText("AI-Augmented Troubleshooting System");
+    await expect(projectTitles.first()).toContainText("AI Email Infrastructure");
   });
 
   test("contact form is present and submits without opening a mail client", async ({ page }) => {

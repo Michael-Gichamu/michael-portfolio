@@ -28,11 +28,11 @@ export default function Projects() {
           kicker="Selected work"
           title={
             <>
-              Three projects,{" "}
+              Selected work,{" "}
               <em className="italic text-gradient-accent">real results</em>.
             </>
           }
-          description="Diagnostic systems, appointment platforms, field automation. Each one cut real time off a real workflow."
+          description="Email infrastructure, diagnostic systems, appointment platforms, field automation. Each one cut real cost off a real workflow."
         />
 
         <div className="mt-10 space-y-16">
@@ -111,16 +111,18 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
           ))}
         </ul>
 
-        <div className="mt-1 flex flex-wrap gap-2">
-          {project.stack.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-bone-200 transition-[border-color,background-color] duration-200 hover:border-accent/30 hover:bg-accent/[0.06]"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
+        {project.stack && project.stack.length > 0 && (
+          <div className="mt-1 flex flex-wrap gap-2">
+            {project.stack.map((s) => (
+              <span
+                key={s}
+                className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-bone-200 transition-[border-color,background-color] duration-200 hover:border-accent/30 hover:bg-accent/[0.06]"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        )}
       </motion.div>
 
       {/* Visual — mobile: second (below copy); desktop: col position varies with reverse */}
@@ -144,6 +146,14 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
 /* ─── Visual variants ───────────────────────────────────────────────────── */
 
 function ProjectVisual({ project }: { project: Project }) {
+  if (project.visual === "slideshow" && project.slides) {
+    return (
+      <div className="w-full">
+        <Slideshow items={project.slides} caption={project.tag} />
+      </div>
+    );
+  }
+
   if (project.visual === "medtech") {
     return (
       <div className="w-full">
