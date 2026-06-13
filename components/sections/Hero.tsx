@@ -92,7 +92,7 @@ export default function Hero() {
                   {line.words.map((word, wi) => (
                     <span
                       key={wi}
-                      className="inline-block overflow-hidden pt-[0.3em] pb-[0.12em] px-[0.04em] align-bottom"
+                      className="inline-block overflow-hidden pt-[0.3em] pb-[0.12em] px-[0.12em] -mx-[0.12em] align-bottom"
                     >
                       <motion.span
                         initial={{ y: "120%", opacity: 0 }}

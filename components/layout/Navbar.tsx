@@ -39,7 +39,7 @@ export default function Navbar() {
           >
             <a
               href="#top"
-              className="group flex items-center gap-2.5 px-2"
+              className="group -ml-3 flex items-center gap-2.5"
               aria-label="Michael Gichamu — home"
             >
               <Image
