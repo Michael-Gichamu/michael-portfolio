@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { nav, profile } from "@/lib/data";
 import { cn } from "@/lib/utils";
@@ -41,11 +42,14 @@ export default function Navbar() {
               className="group flex items-center gap-2.5 px-2"
               aria-label="Michael Gichamu — home"
             >
-              <span className="relative flex h-7 w-7 items-center justify-center">
-                <span className="absolute inset-0 rounded-full bg-gradient-to-br from-accent via-bone-100 to-accent opacity-90 blur-[0.5px]" />
-                <span className="absolute inset-[2px] rounded-full bg-ink-950" />
-                <span className="relative font-display text-sm italic text-bone-50">m</span>
-              </span>
+              <Image
+                src="/aia-logo.png"
+                alt="Michael Gichamu logo"
+                width={36}
+                height={36}
+                priority
+                className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
               <span className="hidden font-mono text-[11px] uppercase tracking-[0.22em] text-bone-200 sm:inline">
                 Michael Gichamu
               </span>
