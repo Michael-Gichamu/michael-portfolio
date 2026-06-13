@@ -70,7 +70,7 @@ export default function Hero() {
           className="flex items-center justify-between"
         >
           <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-bone-300">
-            <span className="text-accent">M.G.</span>
+            <span className="text-accent pl-2">M.G.</span>
             <span className="h-px w-8 bg-white/15" />
             <span>Software · AI Automation</span>
           </div>
@@ -88,7 +88,7 @@ export default function Hero() {
             {headlineLines.map((line, li) => {
               const lineDelay = 1.55 + li * 0.18;
               return (
-                <span key={li} className="block">
+                <span key={li} className={li > 0 ? "block -mt-[0.28em]" : "block"}>
                   {line.words.map((word, wi) => (
                     <span
                       key={wi}
