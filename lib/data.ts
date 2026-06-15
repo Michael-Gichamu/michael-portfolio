@@ -117,7 +117,7 @@ export const projects: Project[] = [
     tag: "Climate-tech · Automation",
     year: "2025",
     description:
-      "At an electric mobility startup, field operators sent financial data over Telegram and someone on the finance team manually copied it into a spreadsheet. Every day, 15 minutes gone. I automated the whole path (Telegram intake, validation, Google Sheets sync) and made it reliable enough that finance stopped checking the work.",
+      "At an electric mobility startup, field operators sent financial data over WhatsApp and the COO manually copied it into a spreadsheet. Every day, 15 minutes gone. I automated the whole path (Telegram intake, validation, Google Sheets sync) and made it reliable enough that the COO stopped checking the work.",
     impact:
       "15 minutes of daily manual work replaced by a bot that runs in under a minute. Zero double-writes in the first 30 days of operation.",
     highlights: [
