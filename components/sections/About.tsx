@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { stats } from "@/lib/data";
@@ -27,6 +27,9 @@ export default function About() {
     offset: ["start end", "end start"],
   });
   const sceneY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  // Only mount the ambient 3D scene once the section is near the viewport,
+  // so it doesn't run a second WebGL context during the initial page load.
+  const sceneInView = useInView(ref, { once: true, margin: "300px" });
 
   return (
     <section
@@ -38,7 +41,7 @@ export default function About() {
         style={{ y: sceneY }}
         className="absolute inset-0 -z-10 opacity-50 will-change-transform"
       >
-        <AmbientScene />
+        {sceneInView && <AmbientScene />}
       </motion.div>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-ink-950 via-ink-950/85 to-ink-950" />
 

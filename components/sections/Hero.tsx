@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import MagneticButton from "@/components/ui/MagneticButton";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
@@ -41,6 +41,22 @@ export default function Hero() {
   // Marquee parallax — slight upward drift
   const marqueeY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
+  // Defer the heavy Three.js scene until the browser is idle so it doesn't
+  // compete with making the page interactive. A gradient stands in until then.
+  const [sceneReady, setSceneReady] = useState(false);
+  useEffect(() => {
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    if (w.requestIdleCallback) {
+      const id = w.requestIdleCallback(() => setSceneReady(true), { timeout: 1800 });
+      return () => w.cancelIdleCallback?.(id);
+    }
+    const t = setTimeout(() => setSceneReady(true), 700);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <section
       ref={ref}
@@ -52,7 +68,7 @@ export default function Hero() {
         style={{ y: sceneY, scale: sceneScale, opacity: sceneOpacity }}
         className="absolute inset-0 will-change-transform"
       >
-        <HeroScene />
+        {sceneReady ? <HeroScene /> : <div className="absolute inset-0 mesh-bg" />}
       </motion.div>
 
       {/* Layered overlays */}
