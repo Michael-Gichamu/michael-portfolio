@@ -1,7 +1,6 @@
 export const profile = {
   name: "Michael Gichamu",
   role: "Software Engineer & AI Automation Specialist",
-  location: "Nairobi, Kenya",
   email: "michaelmatere606@gmail.com",
   github: "https://github.com/michael-gichamu",
   linkedin: "https://www.linkedin.com/in/https:/michael-gichamu-365011215",

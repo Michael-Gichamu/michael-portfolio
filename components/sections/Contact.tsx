@@ -173,7 +173,7 @@ export default function Contact() {
             <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone-300">
               {state === "sent"
                 ? "Message delivered. I'll reply within 24 h."
-                : `Replies usually within 24 h · ${profile.location}`}
+                : "Replies usually within 24 h"}
             </span>
             <MagneticButton
               variant="primary"

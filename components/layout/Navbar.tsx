@@ -22,7 +22,7 @@ export default function Navbar() {
       <motion.header
         initial={{ y: -32, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-500",
           scrolled ? "pt-3" : "pt-5"
@@ -173,7 +173,6 @@ export default function Navbar() {
                 className="mt-12 flex flex-col gap-1 pl-[calc(11px+20px)] font-mono text-xs uppercase tracking-[0.2em] text-bone-400 sm:pl-[calc(11px+20px)]"
               >
                 <span>{profile.email}</span>
-                <span>{profile.location}</span>
               </motion.div>
             </nav>
           </motion.div>

@@ -66,7 +66,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.55, duration: 0.7, ease }}
+          transition={{ delay: 0.15, duration: 0.7, ease }}
           className="flex items-center justify-between"
         >
           <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-bone-300">
@@ -75,7 +75,7 @@ export default function Hero() {
             <span>Software · AI Automation</span>
           </div>
           <div className="hidden font-mono text-[11px] uppercase tracking-[0.24em] text-bone-300 sm:block">
-            Nairobi, Kenya
+            Available worldwide
           </div>
         </motion.div>
 
@@ -86,7 +86,7 @@ export default function Hero() {
         >
           <h1 className="font-display text-display-xl leading-[0.95] text-bone-50">
             {headlineLines.map((line, li) => {
-              const lineDelay = 1.55 + li * 0.18;
+              const lineDelay = 0.25 + li * 0.12;
               return (
                 <span key={li} className={li > 0 ? "block -mt-[0.28em]" : "block"}>
                   {line.words.map((word, wi) => (
@@ -123,7 +123,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.6, duration: 0.8, ease }}
+            transition={{ delay: 0.7, duration: 0.8, ease }}
             className="mt-8 max-w-md text-base leading-relaxed text-bone-300 sm:text-lg"
           >
             I build the systems that drive operational efficiency at scale:
@@ -134,7 +134,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.7, duration: 0.7, ease }}
+            transition={{ delay: 0.85, duration: 0.7, ease }}
             className="mt-9 flex flex-wrap items-center gap-3"
           >
             <MagneticButton href="#work" variant="primary">
