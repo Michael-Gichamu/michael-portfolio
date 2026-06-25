@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import MagneticButton from "@/components/ui/MagneticButton";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
 import Marquee from "@/components/ui/Marquee";
@@ -41,10 +41,21 @@ export default function Hero() {
   // Marquee parallax — slight upward drift
   const marqueeY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
-  // Defer the heavy Three.js scene until the browser is idle so it doesn't
-  // compete with making the page interactive. A gradient stands in until then.
+  // Pause the WebGL render loop when the hero scrolls out of view.
+  const heroInView = useInView(ref);
+
+  // Defer the heavy Three.js scene until the browser is idle, and skip it
+  // entirely on touch devices / reduced-motion — there a gradient stands in.
+  // This keeps the 222K Three.js chunk and its rAF loop off mobile, where it
+  // dominates Total Blocking Time.
   const [sceneReady, setSceneReady] = useState(false);
   useEffect(() => {
+    const mq = window.matchMedia;
+    const allow3D =
+      !mq("(prefers-reduced-motion: reduce)").matches &&
+      !mq("(pointer: coarse)").matches;
+    if (!allow3D) return; // phones / reduced-motion: gradient backdrop only
+
     const w = window as Window & {
       requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
       cancelIdleCallback?: (id: number) => void;
@@ -68,7 +79,11 @@ export default function Hero() {
         style={{ y: sceneY, scale: sceneScale, opacity: sceneOpacity }}
         className="absolute inset-0 will-change-transform"
       >
-        {sceneReady ? <HeroScene /> : <div className="absolute inset-0 mesh-bg" />}
+        {sceneReady ? (
+          <HeroScene frameloop={heroInView ? "always" : "never"} />
+        ) : (
+          <div className="absolute inset-0 mesh-bg" />
+        )}
       </motion.div>
 
       {/* Layered overlays */}

@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -27,9 +27,24 @@ export default function About() {
     offset: ["start end", "end start"],
   });
   const sceneY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  // Only mount the ambient 3D scene once the section is near the viewport,
-  // so it doesn't run a second WebGL context during the initial page load.
-  const sceneInView = useInView(ref, { once: true, margin: "300px" });
+
+  // 3D ambient background: skip entirely on touch / reduced-motion, mount only
+  // when the section is near the viewport, and pause its render loop when it
+  // scrolls away. Keeps the second WebGL context off mobile and off the CPU
+  // when not visible.
+  const nearView = useInView(ref, { margin: "300px" });
+  const [allow3D, setAllow3D] = useState(false);
+  const [mounted3D, setMounted3D] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia;
+    setAllow3D(
+      !mq("(prefers-reduced-motion: reduce)").matches &&
+        !mq("(pointer: coarse)").matches
+    );
+  }, []);
+  useEffect(() => {
+    if (allow3D && nearView) setMounted3D(true);
+  }, [allow3D, nearView]);
 
   return (
     <section
@@ -41,7 +56,7 @@ export default function About() {
         style={{ y: sceneY }}
         className="absolute inset-0 -z-10 opacity-50 will-change-transform"
       >
-        {sceneInView && <AmbientScene />}
+        {mounted3D && <AmbientScene frameloop={nearView ? "always" : "never"} />}
       </motion.div>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-ink-950 via-ink-950/85 to-ink-950" />
 

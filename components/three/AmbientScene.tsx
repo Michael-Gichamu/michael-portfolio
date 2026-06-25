@@ -58,9 +58,14 @@ function Lattice() {
   );
 }
 
-export default function AmbientScene() {
+export default function AmbientScene({
+  frameloop = "always",
+}: {
+  frameloop?: "always" | "demand" | "never";
+}) {
   return (
     <Canvas
+      frameloop={frameloop}
       dpr={[1, 1.4]}
       camera={{ position: [0, 0, 6], fov: 45 }}
       gl={{ antialias: true, alpha: true }}

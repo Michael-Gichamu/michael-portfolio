@@ -175,9 +175,14 @@ function CameraRig() {
   return null;
 }
 
-export default function HeroScene() {
+export default function HeroScene({
+  frameloop = "always",
+}: {
+  frameloop?: "always" | "demand" | "never";
+}) {
   return (
     <Canvas
+      frameloop={frameloop}
       dpr={[1, 1.6]}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       camera={{ position: [0, 0, 5], fov: 42 }}
