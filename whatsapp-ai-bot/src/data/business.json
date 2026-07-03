@@ -1,0 +1,16 @@
+{
+  "services": [
+    { "id": "consultation", "name": "Consultation", "durationMinutes": 30 },
+    { "id": "follow-up", "name": "Follow-up Session", "durationMinutes": 20 }
+  ],
+  "workingHours": {
+    "monday": { "start": "09:00", "end": "17:00" },
+    "tuesday": { "start": "09:00", "end": "17:00" },
+    "wednesday": { "start": "09:00", "end": "17:00" },
+    "thursday": { "start": "09:00", "end": "17:00" },
+    "friday": { "start": "09:00", "end": "17:00" },
+    "saturday": { "start": "09:00", "end": "13:00" },
+    "sunday": null
+  },
+  "slotMinutes": 30
+}
