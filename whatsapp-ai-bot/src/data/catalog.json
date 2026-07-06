@@ -1,5 +1,0 @@
-[
-  { "id": "sku-001", "name": "Starter Package", "price": 2500, "description": "Entry-level package, ideal for first-time customers." },
-  { "id": "sku-002", "name": "Standard Package", "price": 5000, "description": "Our most popular package with full support." },
-  { "id": "sku-003", "name": "Premium Package", "price": 9500, "description": "Everything in Standard, plus priority handling." }
-]
