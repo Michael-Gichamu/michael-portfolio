@@ -1,0 +1,116 @@
+/* ── Workshop base styles ──────────────────────────────────────────────────────
+   Scoped to #workshop-root to avoid conflicting with the portfolio's global
+   body/html styles. The workshop layout wraps everything in <div id="workshop-root">.
+   ──────────────────────────────────────────────────────────────────────────── */
+
+#workshop-root {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+#workshop-root img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#workshop-root h1,
+#workshop-root h2,
+#workshop-root h3,
+#workshop-root h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+#workshop-root h2 {
+  font-size: var(--fs-h2);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+#workshop-root p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+#workshop-root a {
+  color: inherit;
+}
+
+#workshop-root :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--r-sm);
+  font-weight: 700;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+.theme-dark {
+  background: var(--forest);
+  color: var(--on-dark);
+  --edge: var(--paper);
+  --focus: var(--saffron);
+  --muted: var(--on-dark-muted);
+  --line: var(--line-dark);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #workshop-root *,
+  #workshop-root *::before,
+  #workshop-root *::after {
+    transition-duration: 0.001ms !important;
+  }
+}

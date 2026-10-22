@@ -3,7 +3,7 @@ export const profile = {
   role: "Software Engineer & AI Automation Specialist",
   email: "michaelmatere606@gmail.com",
   github: "https://github.com/michael-gichamu",
-  linkedin: "https://www.linkedin.com/in/https:/michael-gichamu-365011215",
+  linkedin: "https://www.linkedin.com/in/https:/michael-gichamu",
   available: true,
 };
 
@@ -288,4 +288,5 @@ export const nav = [
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
+  { label: "AI Workshop", href: "/ai-workshop" },
 ];
