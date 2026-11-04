@@ -6,10 +6,10 @@ export const HERO = {
     'AI tools can already do a great deal. The opportunity is to get work closer to the quality you need, spend less time revising results, and make AI a more effective part of how you work.',
     'Learn how to get more from AI tools, set up your own AI Operating System, and find opportunities to automate work to save time, control costs and increase output.',
   ],
-  dates: '8–9 November 2026',
+  dates: '23–24 November 2026',
   price: 'KSh 3,800',
   partner: 'Alternatives Africa',
-  deadline: '7 November 2026',
+  deadline: '22 November 2026',
 };
 export const PHILOSOPHY = {
   title: 'Make AI Work Better for You',
@@ -149,19 +149,19 @@ export const FACILITATOR = {
 };
 export const DETAILS = {
   title: 'Workshop Details and Pricing',
-  dates: '8–9 November 2026',
+  dates: '23–24 November 2026',
   fee: 'KSh 3,800',
   feeNote: 'per participant',
   included:
     'Two days of training, learning resources, your AI Operating System setup and a collaborative automated-workflow exercise.',
-  deadline: '7 November 2026',
+  deadline: '22 November 2026',
   secured: 'Your place is secured once you have registered and completed payment.',
 };
 export const FINAL = {
   title: 'Ready to Get More Value from AI?',
   body: 'Learn how to produce high-quality work in less time, build a repeatable way of working with AI, and apply automation to improve efficiency and increase capacity.',
-  details: 'KSh 3,800 | 8–9 November 2026',
-  deadline: 'Register and complete payment by 7 November 2026 to secure your place.',
+  details: 'KSh 3,800 | 23–24 November 2026',
+  deadline: 'Register and complete payment by 22 November 2026 to secure your place.',
 };
 export const FAQS = [
   {
@@ -192,7 +192,7 @@ export const FAQS = [
   },
   {
     q: 'How do I secure my place?',
-    a: ['Complete registration and payment by 7 November 2026 using the instructions provided.'],
+    a: ['Complete registration and payment by 22 November 2026 using the instructions provided.'],
   },
   {
     q: 'Will we build an automated workflow?',

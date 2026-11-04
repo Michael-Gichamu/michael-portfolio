@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AI at Work: Better Results, Better Systems, Less Manual Work',
     description:
-      'A two-day workshop on AI tools and automation. 8–9 November 2026. In partnership with Alternatives Africa.',
+      'A two-day workshop on AI tools and automation. 23–24 November 2026. In partnership with Alternatives Africa.',
     type: 'website',
   },
 };
