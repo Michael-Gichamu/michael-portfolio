@@ -5,7 +5,7 @@
 ## Identity
 
 **Project:** Personal portfolio — Michael Gichamu, Software Engineer & AI Automation Specialist  
-**Register:** Brand (design IS the product — the site communicates competence directly)  
+**Register:** Brand (design IS the product — the site communicates competence directly). 
 **Tone:** Precise, dark, editorial. Quiet confidence. No startup-slop language.
 
 ## Color System
