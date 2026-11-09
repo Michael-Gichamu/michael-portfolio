@@ -1,22 +1,10 @@
-/**
- * AI Workshop – site configuration.
- *
- * REGISTRATION_URL
- *   The registration / payment destination. It has NOT been supplied yet.
- *   Set it with the NEXT_PUBLIC_REGISTRATION_URL environment variable.
- *   Every "RESERVE YOUR PLACE" button reads this single value.
- *   While it is empty, buttons scroll to the workshop details block instead.
- */
-export const REGISTRATION_URL: string = (
-  process.env.NEXT_PUBLIC_REGISTRATION_URL ?? ''
-).trim();
+export const WORKSHOP_DATES = '3–4 December 2026';
+export const REGISTRATION_DEADLINE = '1 December 2026';
 
-export const isRegistrationConfigured = REGISTRATION_URL.length > 0;
-
-/** Where every registration button points. */
-export const registrationHref = isRegistrationConfigured
-  ? REGISTRATION_URL
-  : '#details';
+/** AI workshop registration destination used by every "RESERVE YOUR PLACE" button. */
+export const REGISTRATION_URL = 'https://forms.gle/9qPUcF9amHfyX2M57';
+export const isRegistrationConfigured = true;
+export const registrationHref = REGISTRATION_URL;
 
 export const FACILITATOR_SITE = 'https://michaelgichamu.tech';
 
