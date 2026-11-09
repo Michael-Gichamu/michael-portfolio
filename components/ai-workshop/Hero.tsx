@@ -1,5 +1,6 @@
 import './styles/hero.css';
 import { HERO } from '../../lib/aiWorkshop';
+import { REGISTRATION_DEADLINE, WORKSHOP_DATES } from '../../lib/config';
 import { CtaButton } from './CtaButton';
 import { Check } from './Icons';
 
@@ -86,14 +87,14 @@ export default function Hero() {
 
           <aside className="ticket" aria-label="Workshop dates, fee and registration">
             <p className="ticket__label">Paid two-day workshop</p>
-            <p className="ticket__when">{HERO.dates}</p>
+            <p className="ticket__when">{WORKSHOP_DATES}</p>
             <p className="ticket__price">
               <span className="sr-only"> | </span>
               {HERO.price}
             </p>
             <CtaButton where="hero" size="lg" />
             <p className="ticket__deadline">
-              Registration and payment deadline: <strong>{HERO.deadline}</strong>
+              Registration and payment deadline: <strong>{REGISTRATION_DEADLINE}</strong>
             </p>
             <p className="ticket__partner">
               In partnership with <strong>{HERO.partner}</strong>
