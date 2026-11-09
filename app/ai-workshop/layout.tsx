@@ -12,13 +12,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AI at Work: Better Results, Better Systems, Less Manual Work',
     description:
-      'A two-day workshop on AI tools and automation. 23–24 November 2026. In partnership with Alternatives Africa.',
+      'A two-day workshop on AI tools and automation. 3–4 December 2026. In partnership with Alternatives Africa.',
     type: 'website',
   },
 };
 
 export default function AIWorkshopLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div id="workshop-root">{children}</div>
-  );
+  return <div id="workshop-root">{children}</div>;
 }
