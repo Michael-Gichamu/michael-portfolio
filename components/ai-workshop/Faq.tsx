@@ -1,4 +1,5 @@
 import { FAQS } from '@/lib/aiWorkshop';
+import { REGISTRATION_DEADLINE } from '@/lib/config';
 
 /** Native <details>/<summary>: keyboard, touch and screen-reader support, with no JavaScript required. */
 export function Faq() {
@@ -17,7 +18,9 @@ export function Faq() {
               </summary>
               <div className="faq__a">
                 {f.a.map((p) => (
-                  <p key={p}>{p}</p>
+                  <p key={p}>
+                    {p.replace(/22 November 2026/g, REGISTRATION_DEADLINE)}
+                  </p>
                 ))}
               </div>
             </details>
