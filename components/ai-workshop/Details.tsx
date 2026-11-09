@@ -1,4 +1,5 @@
 import { DETAILS } from '@/lib/aiWorkshop';
+import { REGISTRATION_DEADLINE, WORKSHOP_DATES } from '@/lib/config';
 import { CtaButton } from './CtaButton';
 
 export function Details() {
@@ -19,7 +20,7 @@ export function Details() {
           <dl className="pass__main">
             <div>
               <dt>Dates</dt>
-              <dd className="pass__big">{DETAILS.dates}</dd>
+              <dd className="pass__big">{WORKSHOP_DATES}</dd>
             </div>
             <div>
               <dt>Included</dt>
@@ -27,7 +28,7 @@ export function Details() {
             </div>
             <div>
               <dt>Registration and payment deadline</dt>
-              <dd className="pass__big">{DETAILS.deadline}</dd>
+              <dd className="pass__big">{REGISTRATION_DEADLINE}</dd>
             </div>
           </dl>
 
