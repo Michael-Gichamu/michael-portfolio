@@ -1,5 +1,5 @@
 export const WORKSHOP_DATES = '3–4 December 2026';
-export const REGISTRATION_DEADLINE = '1 December 2026';
+export const REGISTRATION_DEADLINE = '3 December 2026';
 
 /** AI workshop registration destination used by every "RESERVE YOUR PLACE" button. */
 export const REGISTRATION_URL = 'https://forms.gle/9qPUcF9amHfyX2M57';
