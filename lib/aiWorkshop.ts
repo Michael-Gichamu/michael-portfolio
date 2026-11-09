@@ -1,3 +1,5 @@
+import { REGISTRATION_DEADLINE, WORKSHOP_DATES } from './config';
+
 export const WORKSHOP_NAME = 'AI at Work: Better Results, Better Systems, Less Manual Work';
 export const HERO = {
   headlineLines: ['AI at Work:', 'Better Results,', 'Better Systems,', 'Less Manual Work'],
@@ -6,10 +8,10 @@ export const HERO = {
     'AI tools can already do a great deal. The opportunity is to get work closer to the quality you need, spend less time revising results, and make AI a more effective part of how you work.',
     'Learn how to get more from AI tools, set up your own AI Operating System, and find opportunities to automate work to save time, control costs and increase output.',
   ],
-  dates: '23–24 November 2026',
+  dates: WORKSHOP_DATES,
   price: 'KSh 3,800',
   partner: 'Alternatives Africa',
-  deadline: '22 November 2026',
+  deadline: REGISTRATION_DEADLINE,
 };
 export const PHILOSOPHY = {
   title: 'Make AI Work Better for You',
@@ -30,7 +32,7 @@ export const OUTCOMES = [
   },
   {
     title: 'Build Your Own AI Operating System',
-    body: 'Create a personal setup for how you work with AI. Organise your projects, instructions, reference material and recurring routines so you can work more consistently without rebuilding your approach every time.',
+    body: 'Create a personal setup for how you work with AI. Organise your projects, instructions, reference material and recurring routines so you can work more consistently without rebuilding your context each time.',
   },
   {
     title: 'Save Time, Control Costs and Increase Capacity',
@@ -38,7 +40,7 @@ export const OUTCOMES = [
   },
   {
     title: 'Learn How to Build Automated Workflows',
-    body: 'Work through a practical example together and learn how to build an automated workflow. Understand how the different parts work together and how similar approaches can be applied to suitable tasks in your work or business.',
+    body: 'Work through a practical example together and learn how to build an automated workflow. Understand how the different parts work together and how similar approaches can be applied to suitable opportunities.',
   },
 ];
 export const PROGRAMME = {
@@ -79,7 +81,7 @@ export const PROGRAMME = {
         {
           n: 5,
           title: 'Learn to Build Automated Workflows',
-          body: 'Work together on a practical example and build an automated workflow. Understand how to move from an opportunity to a working process, and how to apply a similar approach to suitable tasks in your own work or business.',
+          body: 'Work together on a practical example and build an automated workflow. Understand how to move from an opportunity to a working process, and how to apply a similar approach to suitable opportunities in your own work.',
         },
       ],
     },
@@ -149,19 +151,19 @@ export const FACILITATOR = {
 };
 export const DETAILS = {
   title: 'Workshop Details and Pricing',
-  dates: '23–24 November 2026',
+  dates: WORKSHOP_DATES,
   fee: 'KSh 3,800',
   feeNote: 'per participant',
   included:
     'Two days of training, learning resources, your AI Operating System setup and a collaborative automated-workflow exercise.',
-  deadline: '22 November 2026',
+  deadline: REGISTRATION_DEADLINE,
   secured: 'Your place is secured once you have registered and completed payment.',
 };
 export const FINAL = {
   title: 'Ready to Get More Value from AI?',
   body: 'Learn how to produce high-quality work in less time, build a repeatable way of working with AI, and apply automation to improve efficiency and increase capacity.',
-  details: 'KSh 3,800 | 23–24 November 2026',
-  deadline: 'Register and complete payment by 22 November 2026 to secure your place.',
+  details: `KSh 3,800 | ${WORKSHOP_DATES}`,
+  deadline: `Register and complete payment by ${REGISTRATION_DEADLINE} to secure your place.`,
 };
 export const FAQS = [
   {
@@ -192,7 +194,7 @@ export const FAQS = [
   },
   {
     q: 'How do I secure my place?',
-    a: ['Complete registration and payment by 22 November 2026 using the instructions provided.'],
+    a: [`Complete registration and payment by ${REGISTRATION_DEADLINE} using the instructions provided.`],
   },
   {
     q: 'Will we build an automated workflow?',
