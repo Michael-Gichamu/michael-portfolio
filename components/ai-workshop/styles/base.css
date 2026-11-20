@@ -6,6 +6,7 @@
 #workshop-root {
   background: var(--paper);
   color: var(--ink);
+  color-scheme: light dark;
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: 1.65;
@@ -80,8 +81,7 @@
 }
 
 .container {
-  width: 100%;
-  max-width: calc(var(--max) + 2 * var(--gutter));
+  width: 100%;n  max-width: calc(var(--max) + 2 * var(--gutter));
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
@@ -105,6 +105,62 @@ section[id] {
 
 html {
   -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  #workshop-root {
+    /* Keep the workshop's forest-and-saffron identity, but adapt every surface
+       and text token so light cards and sections become intentional dark layers. */
+    color-scheme: dark;
+    --paper: #101a16;
+    --paper-2: #17241e;
+    --surface: #1d2b24;
+    --ink: #e8f0eb;
+    --ink-muted: #b7c8be;
+    --forest: #0b211a;
+    --forest-2: #102a21;
+    --forest-deep: #071812;
+    --moss: #8fc5a8;
+    --mint: #b7d9c7;
+    --saffron: #ffd166;
+    --saffron-hover: #ffdc86;
+    --on-dark: #edf4ef;
+    --on-dark-muted: #b8c9bf;
+    --line: rgba(232, 240, 235, 0.16);
+    --line-dark: rgba(232, 240, 235, 0.2);
+    --focus: #ffd166;
+  }
+
+  /* Soften the bold light-theme outlines and offset shadows on dark surfaces. */
+  #workshop-root :where(
+    .nav__toggle,
+    .ticket,
+    .outcome,
+    .day,
+    .pass,
+    .sheet,
+    .audience__list,
+    .audience__row,
+    .nocode,
+    .faq__item,
+    .faq__icon,
+    .cap__free
+  ) {
+    border-color: var(--line);
+  }
+
+  #workshop-root :where(.ticket, .pass, .nocode) {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  }
+
+  /* Saffron remains a bright accent; use dark lettering on it for contrast. */
+  #workshop-root :where(.cta, .compare__bar, .tick, .pass__stub, .nocode) {
+    color: var(--forest-deep);
+  }
+
+  #workshop-root .os__stack li {
+    color: var(--forest-deep);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
